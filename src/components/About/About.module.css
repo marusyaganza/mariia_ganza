@@ -1,0 +1,110 @@
+.section {
+  position: relative;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--green-light),
+    var(--blue),
+    var(--green-light),
+    transparent
+  );
+}
+
+.aboutText {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(215, 199, 183, 0.05) 0%,
+    rgba(215, 199, 183, 0.02) 100%
+  );
+  border-left: 4px solid var(--green-light);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.aboutText::before {
+  content: "CASE FILE: DEVELOPER PROFILE";
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  background: var(--bg-color);
+  padding: 5px 15px;
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  color: var(--yellow);
+  letter-spacing: 1px;
+}
+
+.skillsGrid {
+  position: relative;
+}
+
+.skillsGrid::before {
+  content: "EVIDENCE LOCKER";
+  position: absolute;
+  top: -40px;
+  left: 0;
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+  color: var(--blue);
+  letter-spacing: 2px;
+}
+
+.skillItem {
+  background: linear-gradient(
+    135deg,
+    rgba(215, 199, 183, 0.08) 0%,
+    rgba(215, 199, 183, 0.03) 100%
+  );
+  border: 1px solid rgba(215, 199, 183, 0.2);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.skillItem::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 232, 31, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.skillItem:hover::before {
+  left: 100%;
+}
+
+.skillItem:hover {
+  border-color: var(--green-light);
+  background: rgba(3, 140, 51, 0.1);
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3), 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.fadeIn {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fadeIn.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

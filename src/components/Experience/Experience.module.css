@@ -1,0 +1,170 @@
+.section {
+  position: relative;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--green-light),
+    var(--blue),
+    var(--green-light),
+    transparent
+  );
+}
+
+.experienceTimeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.experienceTimeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--green-light),
+    var(--blue),
+    var(--pink)
+  );
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(3, 140, 51, 0.3);
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.timelineItem:nth-child(odd) .timelineContent {
+  margin-right: auto;
+  margin-left: 0;
+  text-align: right;
+  padding-right: 40px;
+}
+
+.timelineItem:nth-child(even) .timelineContent {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: left;
+  padding-left: 40px;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: var(--green-light);
+  border-radius: 50%;
+  border: 4px solid var(--bg-color);
+  box-shadow: 0 0 0 4px var(--green-light), 0 0 20px rgba(3, 140, 51, 0.4);
+  z-index: 10;
+}
+
+.timelineContent {
+  width: 45%;
+  background: linear-gradient(
+    135deg,
+    rgba(215, 199, 183, 0.06) 0%,
+    rgba(215, 199, 183, 0.02) 100%
+  );
+  padding: 30px;
+  border: 1px solid rgba(215, 199, 183, 0.15);
+  position: relative;
+  transition: all 0.4s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.timelineContent:hover {
+  transform: translateY(-5px);
+  border-color: var(--green-light);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(3, 140, 51, 0.3);
+}
+
+.timelineContent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green-light), var(--blue));
+}
+
+.jobBadge {
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  color: var(--yellow);
+  background: rgba(255, 232, 31, 0.1);
+  padding: 5px 12px;
+  border: 1px solid var(--yellow);
+  display: inline-block;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(255, 232, 31, 0.3);
+}
+
+.techBadge {
+  font-family: var(--font-accent);
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  background: rgba(143, 189, 198, 0.15);
+  color: var(--blue);
+  border: 1px solid rgba(143, 189, 198, 0.3);
+  transition: all 0.3s ease;
+}
+
+.techBadge:hover {
+  background: rgba(143, 189, 198, 0.25);
+  box-shadow: 0 0 8px rgba(143, 189, 198, 0.2);
+}
+
+.fadeIn {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fadeIn.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .timelineItem:nth-child(odd) .timelineContent,
+  .timelineItem:nth-child(even) .timelineContent {
+    margin: 0;
+    text-align: left;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .timelineMarker {
+    left: -12px;
+    transform: none;
+  }
+
+  .timelineContent {
+    margin-right: 20px;
+  }
+
+  .experienceTimeline::before {
+    left: -5px;
+    transform: none;
+  }
+}

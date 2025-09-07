@@ -1,0 +1,23 @@
+.footer {
+  text-align: center;
+  padding: 60px 0;
+  border-top: 1px solid rgba(215, 199, 183, 0.1);
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.socialLink {
+  color: var(--text-color);
+  text-decoration: none;
+  font-family: var(--font-accent);
+  transition: all 0.3s ease;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.socialLink:hover {
+  color: var(--green-light);
+  border-color: var(--green-light);
+  box-shadow: 0 0 15px rgba(3, 140, 51, 0.3);
+}

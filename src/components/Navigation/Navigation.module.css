@@ -1,0 +1,82 @@
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(33, 22, 26, 0.98) 0%,
+    rgba(33, 22, 26, 0.95) 100%
+  );
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(215, 199, 183, 0.1);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.navScrolled {
+  background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-color) 100%);
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.7);
+}
+
+.navNotScrolled {
+  background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-color) 100%);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--green-light);
+  text-shadow: 0 0 20px rgba(3, 140, 51, 0.3);
+  position: relative;
+}
+
+.logo::after {
+  content: "●";
+  color: var(--yellow);
+  margin-left: 8px;
+  animation: pulse 2s infinite;
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+}
+
+.navLink {
+  background: none;
+  border: none;
+  font-family: var(--font-accent);
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.navLink::before {
+  content: attr(data-number);
+  position: absolute;
+  left: -25px;
+  color: var(--green-light);
+  font-size: 0.8rem;
+}
+
+.navLink:hover {
+  color: var(--yellow);
+  text-shadow: 0 0 10px rgba(255, 232, 31, 0.5);
+}
+
+/* Animations - using global pulse keyframe */
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+}

@@ -1,0 +1,88 @@
+.blindsOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 8px,
+    rgba(0, 0, 0, 0.1) 8px,
+    rgba(0, 0, 0, 0.1) 10px
+  );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.spotlight {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 232, 31, 0.1) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  animation: moveSpotlight 20s linear infinite;
+  will-change: transform;
+}
+
+.spotlight1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.spotlight2 {
+  top: 60%;
+  right: 15%;
+  animation-delay: -10s;
+}
+
+.mouseSpotlight {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(3, 140, 51, 0.08) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+/* Animations */
+@keyframes moveSpotlight {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(100px, -50px) scale(1.2);
+  }
+  50% {
+    transform: translate(-50px, 100px) scale(0.8);
+  }
+  75% {
+    transform: translate(-100px, -30px) scale(1.1);
+  }
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}

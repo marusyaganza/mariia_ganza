@@ -1,0 +1,141 @@
+.section {
+  position: relative;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--green-light),
+    var(--blue),
+    var(--green-light),
+    transparent
+  );
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 40px;
+}
+
+.projectCard {
+  background: linear-gradient(
+    135deg,
+    rgba(215, 199, 183, 0.06) 0%,
+    rgba(215, 199, 183, 0.02) 100%
+  );
+  border-radius: 0;
+  padding: 40px;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(215, 199, 183, 0.15);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.projectCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--green-light),
+    var(--blue),
+    var(--pink)
+  );
+}
+
+.projectCard::after {
+  content: "CASE STUDY";
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-family: var(--font-accent);
+  font-size: 0.7rem;
+  color: var(--yellow);
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
+
+.projectCard:hover {
+  transform: translateY(-8px) rotateX(2deg);
+  border-color: var(--green-light);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(3, 140, 51, 0.3);
+}
+
+.projectNumber {
+  font-family: var(--font-accent);
+  color: var(--pink);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.techTag {
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  background: rgba(143, 189, 198, 0.2);
+  color: var(--blue);
+  border-radius: 0;
+  border: 1px solid rgba(143, 189, 198, 0.3);
+  transition: all 0.3s ease;
+}
+
+.techTag:hover {
+  background: rgba(143, 189, 198, 0.3);
+  box-shadow: 0 0 10px rgba(143, 189, 198, 0.2);
+}
+
+.projectLink {
+  color: var(--green-light);
+  text-decoration: none;
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.projectLink::after {
+  content: " ▸";
+  transition: transform 0.3s ease;
+}
+
+.projectLink:hover {
+  color: var(--yellow);
+  text-shadow: 0 0 8px rgba(255, 232, 31, 0.4);
+}
+
+.projectLink:hover::after {
+  transform: translateX(5px);
+}
+
+.fadeIn {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fadeIn.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+}

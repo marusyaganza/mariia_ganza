@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@300;400;500;600&family=Fira+Mono:wght@400;500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #21161a;
+  --text-color: #d7c7b7;
+  --green-light: #038c33;
+  --green-dark: #01401c;
+  --blue: #8fbdc6;
+  --yellow: #ffe81f;
+  --pink: #e5576a;
+  --font-heading: "Courier Prime", monospace;
+  --font-body: "Inter", sans-serif;
+  --font-accent: "Fira Mono", monospace;
+  --shadow-noir: 0 20px 40px rgba(0, 0, 0, 0.7);
+  --glow-green: 0 0 20px rgba(3, 140, 51, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Film grain overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 232, 31, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(143, 189, 198, 0.03) 0%,
+      transparent 50%
+    ),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='1'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.02 0'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* Global animations - only keep animations that are truly global */
+@keyframes slideFromShadows {
+  from {
+    opacity: 0;
+    transform: translateX(-50px) translateY(20px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--green-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blue);
+}
+
+/* Classes used by Layout component */
+.tech-tag {
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  background: rgba(143, 189, 198, 0.2);
+  color: var(--blue);
+  border-radius: 0;
+  border: 1px solid rgba(143, 189, 198, 0.3);
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: rgba(143, 189, 198, 0.3);
+  box-shadow: 0 0 10px rgba(143, 189, 198, 0.2);
+}
+
+.skill-item {
+  background: linear-gradient(
+    135deg,
+    rgba(215, 199, 183, 0.08) 0%,
+    rgba(215, 199, 183, 0.03) 100%
+  );
+  padding: 15px 20px;
+  border-radius: 0;
+  text-align: center;
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(215, 199, 183, 0.2);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.skill-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 232, 31, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.skill-item:hover::before {
+  left: 100%;
+}
+
+.skill-item:hover {
+  border-color: var(--green-light);
+  background: rgba(3, 140, 51, 0.1);
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3), 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.project-card {
+  background: linear-gradient(
+    135deg,
+    rgba(215, 199, 183, 0.06) 0%,
+    rgba(215, 199, 183, 0.02) 100%
+  );
+  border-radius: 0;
+  padding: 40px;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(215, 199, 183, 0.15);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-noir);
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--green-light),
+    var(--blue),
+    var(--pink)
+  );
+}
+
+.project-card::after {
+  content: "CASE STUDY";
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-family: var(--font-accent);
+  font-size: 0.7rem;
+  color: var(--yellow);
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) rotateX(2deg);
+  border-color: var(--green-light);
+  box-shadow: var(--shadow-noir), var(--glow-green);
+}
