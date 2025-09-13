@@ -21,7 +21,7 @@ const experienceData: TimelineItem[] = [
     company: "EPAM Systems",
     period: "2020 - Present",
     description:
-      "riving UI consistency and performance across enterprise products by building robust, reusable components for the Design System. Spearheaded architectural improvements and best practices adoption. Delivered client-facing applications with a strong focus on accessibility and user experience. Maintained end-to-end reliability with comprehensive Cypress test coverage and clear sprint communications for customers.",
+      "Built client-facing applications focusing on seamless user experience and performance optimization. Served as a mentor and contributor in the company’s Accessibility Mentoring Program, teaching inclusive design practices. Held mock technical interviews to help trainees prepare for junior developer roles, and took part in interviewing colleagues for internal promotions.",
     achievements: [
       "Developed reusable Design System components for better UI consistency",
       "Presented technical results and mentored junior developers in best practices",

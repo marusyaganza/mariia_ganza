@@ -66,7 +66,7 @@ const About = () => {
             <p>
               The name&apos;s{" "}
               <span className="text-green-light font-heading">
-                Mariia Ganza
+                Mariia Ganza{" "}
               </span>
               and since 2017, I’ve been piecing together clues in the world of
               web technology. What started out as modest e-commerce code soon
