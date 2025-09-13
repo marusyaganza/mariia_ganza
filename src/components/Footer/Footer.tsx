@@ -9,23 +9,25 @@ const Footer = () => {
           aria-label="Social media links"
         >
           <a
-            href="#"
+            href="https://github.com/marusyaganza"
             className={styles.socialLink}
             aria-label="Visit GitHub profile"
+            target="_blank"
           >
             GitHub
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/mariia-ganza/"
             className={styles.socialLink}
             aria-label="Visit LinkedIn profile"
+            target="_blank"
           >
             LinkedIn
           </a>
         </nav>
         <div className="font-accent text-sm opacity-70 max-w-md mx-auto leading-relaxed">
           <p>
-            Built with Next.js by Your Name
+            Built with Next.js by Mariia Ganza
             <br />
             <span className="text-green-light">★</span> Another case closed{" "}
             <span className="text-green-light">★</span>

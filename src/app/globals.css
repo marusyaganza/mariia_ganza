@@ -57,7 +57,6 @@ body::before {
   mix-blend-mode: overlay;
 }
 
-/* Global animations - only keep animations that are truly global */
 @keyframes slideFromShadows {
   from {
     opacity: 0;
@@ -99,7 +98,6 @@ body::before {
   background: var(--blue);
 }
 
-/* Classes used by Layout component */
 .tech-tag {
   font-family: var(--font-accent);
   font-size: 0.8rem;

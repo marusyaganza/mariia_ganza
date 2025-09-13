@@ -17,45 +17,45 @@ interface TimelineItem {
 const experienceData: TimelineItem[] = [
   {
     badge: "CURRENT ASSIGNMENT",
-    title: "Senior Full-Stack Detective",
-    company: "TechCorp Industries",
-    period: "2023 - Present",
+    title: "Senior Full-Stack Developer",
+    company: "EPAM Systems",
+    period: "2020 - Present",
     description:
-      "Leading complex digital investigations across multiple platforms. Specialized in React and Node.js operations with a focus on scalable architecture. Successfully closed 50+ high-priority cases involving performance optimization and security vulnerabilities.",
+      "riving UI consistency and performance across enterprise products by building robust, reusable components for the Design System. Spearheaded architectural improvements and best practices adoption. Delivered client-facing applications with a strong focus on accessibility and user experience. Maintained end-to-end reliability with comprehensive Cypress test coverage and clear sprint communications for customers.",
     achievements: [
-      "Reduced system response time by 40%",
-      "Led team of 6 junior detectives",
-      "Implemented CI/CD pipeline investigation protocols",
+      "Developed reusable Design System components for better UI consistency",
+      "Presented technical results and mentored junior developers in best practices",
+      "Maintained strong test coverage and code quality with Cypress and thorough reviews",
     ],
     tech: ["React", "TypeScript", "AWS", "Docker"],
   },
   {
     badge: "FIELD ASSIGNMENT",
-    title: "Digital Forensics Specialist",
-    company: "StartupLab Solutions",
-    period: "2021 - 2023",
+    title: "Senior Software Engineer",
+    company: "Usetech",
+    period: "2019 - 2020",
     description:
-      "Investigated and solved frontend mysteries for multiple clients. Specialized in JavaScript crimes and API integration cases. Built robust evidence-gathering systems and user authentication protocols.",
+      "Engineered secure, accessible interfaces for a leading bank’s flagship platform. Crafted reusable React components for complex financial instruments, prioritizing usability and compliance. ",
     achievements: [
-      "Solved 30+ client cases successfully",
-      "Developed company's first mobile app",
-      "Mentored 3 junior investigators",
+      "Boosted test coverage to 80% by implementing comprehensive Jest test suites and leading cross-team code reviews",
+      "Implemented SEO optimizations to boost discoverability without sacrificing design fidelity",
+      "Partnered with multiple product squads to enhance performance, streamline workflows, and fortify error monitoring",
     ],
-    tech: ["Vue.js", "Python", "MongoDB", "Firebase"],
+    tech: ["React", "TypeScript", "Jest", "Webpack", "Storybook"],
   },
   {
     badge: "ROOKIE YEARS",
-    title: "Junior Web Detective",
-    company: "Digital Agency Co.",
-    period: "2019 - 2021",
+    title: "Frontend Developer",
+    company: "EPAM Systems",
+    period: "2017 - 2019",
     description:
-      "Started my career investigating small-scale web mysteries. Learned the fundamentals of digital forensics, responsive design cases, and client communication protocols.",
+      "Dived into e-commerce and enterprise app development, building user-facing features and analytics tools for HR and retail clients. Translated UI/UX prototypes into scalable React interfaces, optimized performance, and helped modernize legacy systems.",
     achievements: [
-      "Completed detective training program",
-      "Solved first major e-commerce case",
-      "Achieved 98% case closure rate",
+      "Completed EPAM training program",
+      "Optimized SVG images and fonts",
+      "Translated UI/UX design prototypes into actual code",
     ],
-    tech: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
+    tech: ["HTML/CSS", "JavaScript", "jQuery", "RxJS", "React"],
   },
 ];
 

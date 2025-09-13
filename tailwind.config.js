@@ -10,7 +10,6 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        // Custom portfolio colors
         "bg-color": "var(--bg-color)",
         "text-color": "var(--text-color)",
         "green-light": "var(--green-light)",

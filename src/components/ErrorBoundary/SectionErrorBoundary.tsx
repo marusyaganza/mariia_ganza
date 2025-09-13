@@ -56,7 +56,6 @@ const SectionErrorBoundary: React.FC<SectionErrorBoundaryProps> = ({
     </div>
   );
 
-  // Prepare Sentry context with section-specific information
   const sectionSentryContext: SentryErrorContext = {
     ...sentryContext,
     sectionName,

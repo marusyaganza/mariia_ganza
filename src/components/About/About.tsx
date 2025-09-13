@@ -5,18 +5,24 @@ import { SkillItem } from "@/components/Effects/SkillItem";
 import styles from "./About.module.css";
 
 const skills = [
-  "JavaScript (ES6+)",
+  "JavaScript",
   "TypeScript",
   "React",
   "Node.js",
-  "Python",
-  "PostgreSQL",
-  "MongoDB",
-  "AWS",
-  "Docker",
-  "Git",
-  "Figma",
   "Next.js",
+  "Tailwind CSS",
+  "MongoDB",
+  "PostgreSQL",
+  "Redis",
+  "Docker",
+  "Cypress",
+  "Playwright",
+  "Vitest",
+  "Jest",
+  "Storybook",
+  "Figma",
+  "Git",
+  "Accessibility",
 ];
 
 const About = () => {
@@ -59,17 +65,27 @@ const About = () => {
             </span>
             <p>
               The name&apos;s{" "}
-              <span className="text-green-light font-heading">Your Name</span>,
-              and I&apos;ve been working this digital beat since 2018. What
-              started as a simple case of customizing themes quickly escalated
-              into a full-scale investigation of web technologies.
+              <span className="text-green-light font-heading">
+                Mariia Ganza
+              </span>
+              and since 2017, I’ve been piecing together clues in the world of
+              web technology. What started out as modest e-commerce code soon
+              led to deeper cases—involving smart home apps, slick design
+              systems, and robust infrastructure in fast-paced environments. I’m
+              endlessly curious about AI and constantly experiment with
+              integrating new technologies into projects to level up user
+              experiences.
             </p>
-
             <p>
-              My methods are unconventional but effective. I approach each
-              project like a complex case — gathering evidence, analyzing
-              patterns, and piecing together solutions that others might miss.
-              The web is my jurisdiction, and clean code is my calling card.
+              For years, I have investigated everything from banking platforms
+              to enterprise design systems, making sure teams deliver reliable,
+              accessible, and easy-to-use interfaces. React and Node.js are my
+              trusted partners, and I leave no detail unchecked—whether building
+              reusable components or locking down quality with Cypress tests.
+              Collaboration isn’t just part of the process; it’s how I uncover
+              the best solutions. Agile teams, sprint rituals, mentoring new
+              devs, or running accessibility workshops — if it strengthens the
+              squad, I’m in.
             </p>
 
             <p>

@@ -27,8 +27,8 @@ const firaMono = Fira_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Your Name - Digital Detective | Full-Stack Developer",
-    template: "%s | Your Name - Digital Detective",
+    default: "Mariia Ganza - Digital Detective | Full-Stack Developer",
+    template: "%s | Mariia Ganza - Digital Detective",
   },
   description:
     "Senior Full-Stack Developer specializing in React, TypeScript, Node.js, and modern web technologies. Solving complex digital mysteries through clean code and innovative solutions. Available for new investigations.",
@@ -44,47 +44,45 @@ export const metadata: Metadata = {
     "Portfolio",
     "Digital Detective",
     "Software Engineer",
-    "AWS",
     "Docker",
     "MongoDB",
-    "PostgreSQL",
+    "Storybook",
   ],
-  authors: [{ name: "Your Name" }],
-  creator: "Your Name",
-  publisher: "Your Name",
+  authors: [{ name: "Mariia Ganza" }],
+  creator: "Mariia Ganza",
+  publisher: "Mariia Ganza",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://yourname.dev"), // Replace with your actual domain
+  metadataBase: new URL("https://mariia-ganza.vercel.app"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yourname.dev", // Replace with your actual domain
-    title: "Your Name - Digital Detective | Full-Stack Developer",
+    url: "https://mariia-ganza.vercel.app",
+    title: "Mariia Ganza - Digital Detective | Full-Stack Developer",
     description:
       "Senior Full-Stack Developer specializing in React, TypeScript, Node.js, and modern web technologies. Solving complex digital mysteries through clean code and innovative solutions.",
-    siteName: "Your Name Portfolio",
+    siteName: "Mariia Ganza Portfolio",
     images: [
       {
-        url: "/og-image.jpg", // You should create this image
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Your Name - Digital Detective Portfolio",
+        alt: "Mariia Ganza - Digital Detective Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Name - Digital Detective | Full-Stack Developer",
+    title: "Mariia Ganza - Digital Detective | Full-Stack Developer",
     description:
       "Senior Full-Stack Developer specializing in React, TypeScript, Node.js, and modern web technologies. Solving complex digital mysteries through clean code.",
-    images: ["/og-image.jpg"], // Same image as Open Graph
-    creator: "@yourusername", // Replace with your Twitter handle
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -99,8 +97,6 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "your-google-verification-code", // Add your Google Search Console verification code
-    // yandex: 'your-yandex-verification-code',
-    // yahoo: 'your-yahoo-verification-code',
   },
 };
 
@@ -109,7 +105,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Prepare Sentry context for the root error boundary
   const rootSentryContext: SentryErrorContext = {
     sectionName: "Root",
     componentName: "RootLayout",

@@ -17,29 +17,45 @@ interface Project {
 const projects: Project[] = [
   {
     number: "CASE #001",
-    title: "The Commerce Conspiracy",
+    title: "Language Power Unlocked",
     description:
-      '"A web of transactions needed untangling. Built a full-stack e-commerce platform that solved the mystery of seamless online shopping. The case involved user authentication, payment processing, and a sophisticated admin dashboard."',
-    tech: ["React", "Node.js", "MongoDB", "Stripe API"],
-    evidenceLink: "#",
-    liveLink: "#",
+      '"A vault of vocabulary craving discovery. Engineered a unified TypeScript monorepo that streamlines word addition, enrichment, and practice. The case tackled seamless GraphQL workflows, shareable UI components, and robust media integration to make learning both immersive and efficient."',
+    tech: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "TypeScript",
+      "GraphQL",
+      "Docker",
+      "Storybook",
+    ],
+    evidenceLink: "https://github.com/marusyaganza/lp-monorepo",
+    liveLink: "https://lp-monorepo-1.onrender.com",
   },
   {
     number: "CASE #002",
-    title: "The Collaboration Caper",
+    title: "Stars Travel Saga",
     description:
-      '"Teams were scattered, productivity was down. I cracked the case with a real-time task management system featuring drag-and-drop functionality and seamless team collaboration tools."',
-    tech: ["TypeScript", "React", "Socket.io", "PostgreSQL"],
-    evidenceLink: "#",
-    liveLink: "#",
+      '"A galaxy’s most secure flight network awaited command. Engineered a Star Wars–themed booking platform with AI-driven droid assistants and enterprise-grade defenses. The mission encompassed interplanetary reservations, real-time caching, and saga-worthy chatbot interactions."',
+    tech: [
+      "TypeScript",
+      "Next.js",
+      "PostgreSQL",
+      "Redis",
+      "OpenAI API",
+      "Playwright",
+      "Vitest",
+    ],
+    evidenceLink: "https://github.com/marusyaganza/stars-travel",
+    liveLink: "https://stars-travel.vercel.app/",
   },
   {
     number: "CASE #003",
-    title: "The Weather Report Mystery",
+    title: "Digital Detective Divinations",
     description:
-      '"Citizens needed reliable weather intelligence. I solved it with a responsive dashboard featuring location-based forecasts, interactive maps, and detailed analytics. The forecast was clear: success."',
+      '"A modern, noir-themed portfolio revealed hidden web-dev clues. Crafted a Next.js and TypeScript showcase with bespoke Tailwind CSS styling to deliver immersive spotlight animations and typewriter effects. The build featured dynamic content components, dramatic lighting gradients, and film-grain overlays for a true detective experience."',
     tech: ["JavaScript", "API Integration", "Chart.js", "CSS Grid"],
-    evidenceLink: "#",
+    evidenceLink: "https://github.com/marusyaganza/mariia_ganza",
     liveLink: "#",
   },
 ];
@@ -111,10 +127,18 @@ const Projects = () => {
                   ))}
                 </div>
                 <nav className="flex gap-5" aria-label="Project links">
-                  <a href={project.evidenceLink} className={styles.projectLink}>
+                  <a
+                    target="_blank"
+                    href={project.evidenceLink}
+                    className={styles.projectLink}
+                  >
                     Evidence
                   </a>
-                  <a href={project.liveLink} className={styles.projectLink}>
+                  <a
+                    target="_blank"
+                    href={project.liveLink}
+                    className={styles.projectLink}
+                  >
                     Live Scene
                   </a>
                 </nav>

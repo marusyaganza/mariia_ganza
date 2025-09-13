@@ -70,7 +70,8 @@ const Hero = () => {
           <div className={styles.heroText}>
             <span className={styles.caseNumber}>CASE FILE: 2025-001</span>
             <h1>
-              I&apos;m <span className={styles.highlightName}>Your Name</span>
+              I&apos;m{" "}
+              <span className={styles.highlightName}>Mariia Ganza</span>
             </h1>
             <h2 ref={subtitleRef} className={styles.typewriterText}>
               Digital Detective

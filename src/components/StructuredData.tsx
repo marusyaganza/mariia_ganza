@@ -1,30 +1,29 @@
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Your Name",
+  name: "Mariia  Ganza",
   jobTitle: "Senior Full-Stack Developer",
   description:
     "Digital Detective solving complex problems through code. Specialized in React, TypeScript, Node.js, and modern web technologies.",
-  url: "https://yourname.dev", // Replace with your actual domain
-  image: "https://yourname.dev/avatar.webp", // Replace with your actual domain
+  url: "https://yourname.dev",
+  image: "https://yourname.dev/avatar.webp",
   sameAs: [
-    "https://github.com/yourusername", // Replace with your GitHub
-    "https://linkedin.com/in/yourusername", // Replace with your LinkedIn
-    "https://twitter.com/yourusername", // Replace with your Twitter
+    "https://github.com/marusyaganza",
+    "https://linkedin.com/in/mariia-ganza",
   ],
   knowsAbout: [
     "JavaScript",
     "TypeScript",
     "React",
     "Node.js",
-    "Python",
-    "PostgreSQL",
-    "MongoDB",
-    "AWS",
-    "Docker",
-    "Git",
-    "Figma",
     "Next.js",
+    "Tailwind CSS",
+    "Storybook",
+    "MongoDB",
+    "Docker",
+    "Cypress",
+    "Jest",
+    "Figma",
   ],
   hasOccupation: {
     "@type": "Occupation",
@@ -33,20 +32,20 @@ const structuredData = {
       "Developing web applications using modern technologies and frameworks",
     skills: [
       "Frontend Development",
-      "Backend Development",
-      "Database Design",
-      "Cloud Architecture",
+      "JavaScript Development",
+      "TypeScript Development",
+      "Docker",
       "DevOps",
-      "UI/UX Design",
+      "Design Systems",
     ],
   },
   alumniOf: {
     "@type": "Organization",
-    name: "TechCorp Industries",
+    name: 'Saint Petersburg State Electrotechnical University "LETI"​',
   },
   worksFor: {
     "@type": "Organization",
-    name: "TechCorp Industries",
+    name: "Epam Systems",
     description:
       "Leading complex digital investigations across multiple platforms",
   },

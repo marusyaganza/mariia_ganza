@@ -39,7 +39,7 @@ const Navigation = () => {
     >
       <div className="max-w-6xl mx-auto px-5 flex justify-between items-center py-5">
         <div className={styles.logo} role="banner">
-          Y.N.
+          M.G.
         </div>
         <ul className={styles.navLinks} role="menubar">
           <li role="none">
