@@ -21,13 +21,20 @@ const experienceData: TimelineItem[] = [
     company: "EPAM Systems",
     period: "2020 - Present",
     description:
-      "Built client-facing applications focusing on seamless user experience and performance optimization. Served as a mentor and contributor in the company’s Accessibility Mentoring Program, teaching inclusive design practices. Held mock technical interviews to help trainees prepare for junior developer roles, and took part in interviewing colleagues for internal promotions.",
+      "Built client-facing applications focusing on seamless user experience and performance optimization. Served as a mentor and contributor in the company’s Accessibility Mentoring Program. Held mock technical interviews to help trainees prepare for junior developer roles, and took part in interviewing colleagues for internal promotions.",
     achievements: [
-      "Developed reusable Design System components for better UI consistency",
-      "Presented technical results and mentored junior developers in best practices",
-      "Maintained strong test coverage and code quality with Cypress and thorough reviews",
+      "Developed reusable Design System components",
+      "Presented technical results and mentored junior developers",
+      "Maintained strong test coverage with Cypress",
     ],
-    tech: ["React", "TypeScript", "AWS", "Docker"],
+    tech: [
+      "React",
+      "TypeScript",
+      "GraphQL",
+      "Apollo",
+      "Cypress",
+      "Accessibility",
+    ],
   },
   {
     badge: "FIELD ASSIGNMENT",
@@ -41,7 +48,7 @@ const experienceData: TimelineItem[] = [
       "Implemented SEO optimizations to boost discoverability without sacrificing design fidelity",
       "Partnered with multiple product squads to enhance performance, streamline workflows, and fortify error monitoring",
     ],
-    tech: ["React", "TypeScript", "Jest", "Webpack", "Storybook"],
+    tech: ["React", "TypeScript", "Node.js", "Jest", "Webpack", "Storybook"],
   },
   {
     badge: "ROOKIE YEARS",

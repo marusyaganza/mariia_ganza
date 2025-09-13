@@ -2,6 +2,12 @@
 
 A modern, noir-themed portfolio website built with Next.js, TypeScript, and Tailwind CSS. This portfolio showcases web development projects and skills with a unique detective/mystery theme.
 
+## Live Preview
+
+🔗 **[View Live Site](https://mariia-ganza.vercel.app)** 
+
+![Portfolio Screenshot](docs/screenshot.png)
+
 ## Tech Stack
 
 - **Framework**: Next.js 15+ with App Router
@@ -21,7 +27,7 @@ A modern, noir-themed portfolio website built with Next.js, TypeScript, and Tail
 1. Clone the repository:
 ```bash
 git clone git@github.com:marusyaganza/mariia_ganza.git
-cd portfolio-nextjs
+cd mariia_ganza
 ```
 
 2. Install dependencies:
