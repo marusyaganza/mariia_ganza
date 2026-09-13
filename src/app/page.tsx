@@ -19,11 +19,11 @@ export default function Home() {
         <SectionErrorBoundary sectionName="About">
           <About />
         </SectionErrorBoundary>
-        <SectionErrorBoundary sectionName="Experience">
-          <Experience />
-        </SectionErrorBoundary>
         <SectionErrorBoundary sectionName="Projects">
           <Projects />
+        </SectionErrorBoundary>
+        <SectionErrorBoundary sectionName="Experience">
+          <Experience />
         </SectionErrorBoundary>
         <SectionErrorBoundary sectionName="Contact">
           <Contact />

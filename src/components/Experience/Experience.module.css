@@ -21,7 +21,7 @@
 
 .experienceTimeline {
   position: relative;
-  max-width: 800px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
@@ -72,7 +72,9 @@
   background: var(--green-light);
   border-radius: 50%;
   border: 4px solid var(--bg-color);
-  box-shadow: 0 0 0 4px var(--green-light), 0 0 20px rgba(3, 140, 51, 0.4);
+  box-shadow:
+    0 0 0 4px var(--green-light),
+    0 0 20px rgba(3, 140, 51, 0.4);
   z-index: 10;
 }
 
@@ -93,7 +95,9 @@
 .timelineContent:hover {
   transform: translateY(-5px);
   border-color: var(--green-light);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(3, 140, 51, 0.3);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(3, 140, 51, 0.3);
 }
 
 .timelineContent::before {
@@ -167,4 +171,15 @@
     left: -5px;
     transform: none;
   }
+}
+
+.recordNumber {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-family: var(--font-accent);
+  font-size: 0.7rem;
+  color: var(--yellow);
+  letter-spacing: 1px;
+  opacity: 0.6;
 }

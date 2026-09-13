@@ -1,7 +1,7 @@
 {
-  "name": "Mariia Ganza - Digital Detective Portfolio",
-  "short_name": "Digital Detective",
-  "description": "Senior Full-Stack Developer specializing in React, TypeScript, Node.js, and modern web technologies",
+  "name": "Mariia Ganza - Backend-leaning Fullstack Engineer Portfolio",
+  "short_name": "Backend-leaning Fullstack Engineer",
+  "description": "Backend-leaning Fullstack Engineer | Python, FastAPI, TypeScript, React, Node.js",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
@@ -26,7 +26,11 @@
       "purpose": "maskable any"
     }
   ],
-  "categories": ["portfolio", "developer", "technology"],
+  "categories": [
+    "portfolio",
+    "developer",
+    "technology"
+  ],
   "lang": "en",
   "dir": "ltr"
 }

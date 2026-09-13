@@ -4,7 +4,8 @@
   align-items: center;
   padding-top: 80px;
   position: relative;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       ellipse at top left,
       rgba(3, 140, 51, 0.1) 0%,
       transparent 50%
@@ -23,7 +24,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       45deg,
       transparent 0%,
       rgba(0, 0, 0, 0.3) 50%,
@@ -75,62 +77,16 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 0 0 10px rgba(255, 232, 31, 0.3);
+  max-width: 800px;
 }
 
 .heroText p {
   font-size: 1.1rem;
   margin-bottom: 40px;
-  max-width: 520px;
+  max-width: 800px;
   opacity: 0.9;
   animation: slideFromShadows 1.2s ease-out 0.6s both;
   font-style: italic;
-}
-
-.profilePhoto {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, var(--green-light), var(--blue));
-  padding: 4px;
-  animation: slideFromShadows 1.2s ease-out 0.8s both;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(3, 140, 51, 0.2);
-  position: relative;
-  will-change: transform;
-}
-
-.profilePhoto::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border-radius: 50%;
-  background: conic-gradient(
-    var(--green-light),
-    var(--blue),
-    var(--yellow),
-    var(--pink),
-    var(--green-light)
-  );
-  z-index: -1;
-  animation: rotate 10s linear infinite;
-}
-
-.profilePhoto img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  background-color: var(--text-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-accent);
-  font-size: 0.9rem;
-  text-align: center;
-  filter: contrast(1.1) brightness(1.05);
 }
 
 .ctaButton {
@@ -175,7 +131,9 @@
   background: var(--green-light);
   color: var(--bg-color);
   transform: translateY(-3px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(3, 140, 51, 0.3);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(3, 140, 51, 0.3);
 }
 
 .typewriterText {
@@ -222,4 +180,30 @@
     width: 180px;
     height: 180px;
   }
+}
+
+.cvLink {
+  color: var(--green-light);
+  text-decoration: none;
+  font-family: var(--font-accent);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.cvLink:hover {
+  color: var(--yellow);
+  text-shadow: 0 0 8px rgba(255, 232, 31, 0.4);
+}
+
+.cvLink:hover::after {
+  transform: translateX(5px);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }

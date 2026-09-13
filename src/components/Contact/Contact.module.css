@@ -29,11 +29,11 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
 }
 
-.contactContent::before {
-  content: "FINAL CHAPTER";
+.subheading {
   position: absolute;
   top: 15px;
   left: 50%;
+  width: 100%;
   transform: translateX(-50%);
   font-family: var(--font-accent);
   font-size: 0.8rem;
@@ -76,7 +76,9 @@
 
 .contactButton:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(3, 140, 51, 0.4);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(3, 140, 51, 0.4);
 }
 
 .fadeIn {
@@ -88,4 +90,29 @@
 .fadeIn.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  color: var(--green-light);
+  text-decoration: none;
+  font-family: var(--font-accent);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.button:hover {
+  color: var(--yellow);
+  text-shadow: 0 0 8px rgba(255, 232, 31, 0.4);
+}
+
+.button:hover::after {
+  transform: translateX(5px);
 }

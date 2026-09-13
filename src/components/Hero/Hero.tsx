@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
-import Image from "next/image";
 import { useAudio } from "../../hooks/useAudio";
 import { scrollToSection } from "../../utils/scrollUtils";
 import styles from "./Hero.module.css";
@@ -60,7 +59,7 @@ const Hero = () => {
     (sectionId: string) => {
       scrollToSection(sectionId, playTypewriter);
     },
-    [playTypewriter]
+    [playTypewriter],
   );
 
   return (
@@ -68,35 +67,40 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto px-5 relative z-10">
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
-            <span className={styles.caseNumber}>CASE FILE: 2025-001</span>
+            <span className={styles.caseNumber}>CASE FILE: 2026-001</span>
             <h1>
               I&apos;m{" "}
               <span className={styles.highlightName}>Mariia Ganza</span>
             </h1>
             <h2 ref={subtitleRef} className={styles.typewriterText}>
-              Digital Detective
+              Backend-leaning Fullstack Engineer
             </h2>
-            <p className={styles.subtitle}>Solving Problems Through Code</p>
-            <p>
-              &ldquo;In the shadows of the digital world, I hunt bugs, craft
-              solutions, and bring ideas to life. Every line of code tells a
-              story, every project solves a mystery.&rdquo;
+            <p className={styles.subtitle}>
+              Python · FastAPI · PostgreSQL · TypeScript · React
             </p>
-            <button
-              onClick={() => handleScrollToSection("experience")}
-              className={styles.ctaButton}
-            >
-              View Service Record
-            </button>
-          </div>
-          <div className={styles.profilePhoto}>
-            <Image
-              priority={true}
-              src="/avatar.webp"
-              alt="Profile Photo"
-              width={220}
-              height={220}
-            />
+            <p>
+              I build and investigate web applications across the UI, API,
+              database, and deployment boundary. My current focus is Python
+              backend development, data-intensive systems, and making complex
+              product behavior easier to reason about.
+            </p>
+            <section className={styles.buttons}>
+              <button
+                onClick={() => handleScrollToSection("projects")}
+                className={styles.ctaButton}
+              >
+                View Case Files
+              </button>
+              <a
+                href="/cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.cvLink}
+                aria-label="Download CV to start investigation"
+              >
+                Download CV
+              </a>
+            </section>
           </div>
         </div>
       </div>

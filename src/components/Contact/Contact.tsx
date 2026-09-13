@@ -19,17 +19,13 @@ const Contact = () => {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
     );
 
     if (contactRef.current) observer.observe(contactRef.current);
 
     return () => observer.disconnect();
   }, []);
-
-  const handlePlayEnter = useCallback(() => {
-    playEnter();
-  }, [playEnter]);
 
   return (
     <section id="contact" className={`${styles.section} py-32`}>
@@ -43,21 +39,46 @@ const Contact = () => {
           ref={contactRef}
           className={`${styles.contactContent} ${styles.fadeIn} text-center max-w-3xl mx-auto relative p-12`}
         >
+          <span className={styles.subheading}>
+            A CLEAR PROBLEM STATEMENT IS A GOOD PLACE TO START
+          </span>
           <blockquote className="text-xl mb-12 opacity-90 italic">
-            &ldquo;Every great detective knows that the best cases come from
-            unexpected places. Got a digital mystery that needs solving?
-            Let&apos;s crack it together.&rdquo;
+            Open to remote backend-leaning fullstack roles and clearly scoped
+            technical contract work. Available for scheduled collaboration
+            across US and European time zones.
           </blockquote>
-          <a
-            href="/cv.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles.contactButton} py-6 px-12`}
-            onClick={handlePlayEnter}
-            aria-label="Download CV to start investigation"
-          >
-            Start Investigation
-          </a>
+          <div className={styles.buttons}>
+            <a
+              href="mailto:mariia_ganza@protonmail.com"
+              className={styles.button}
+            >
+              Email me
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mariia-ganza"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.button}
+            >
+              Linkedin
+            </a>
+            <a
+              href="https://github.com/marusyaganza"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.button}
+            >
+              Github
+            </a>
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.button}
+            >
+              Download CV
+            </a>
+          </div>
         </div>
       </div>
     </section>

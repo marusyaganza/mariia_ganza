@@ -25,7 +25,7 @@ const Navigation = () => {
     (sectionId: string) => {
       scrollToSection(sectionId, playPaperSlide);
     },
-    [playPaperSlide]
+    [playPaperSlide],
   );
 
   return (
@@ -72,20 +72,6 @@ const Navigation = () => {
           </li>
           <li role="none">
             <a
-              href="#experience"
-              onClick={(e) => {
-                e.preventDefault();
-                handleScrollToSection("experience");
-              }}
-              data-number="03."
-              className={styles.navLink}
-              role="menuitem"
-            >
-              Service Record
-            </a>
-          </li>
-          <li role="none">
-            <a
               href="#projects"
               onClick={(e) => {
                 e.preventDefault();
@@ -96,6 +82,20 @@ const Navigation = () => {
               role="menuitem"
             >
               Cases
+            </a>
+          </li>
+          <li role="none">
+            <a
+              href="#experience"
+              onClick={(e) => {
+                e.preventDefault();
+                handleScrollToSection("experience");
+              }}
+              data-number="03."
+              className={styles.navLink}
+              role="menuitem"
+            >
+              Experience Record
             </a>
           </li>
           <li role="none">
