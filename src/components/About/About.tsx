@@ -54,7 +54,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <article
             ref={aboutRef}
-            className={`${styles.aboutText} ${styles.fadeIn} text-lg leading-relaxed p-8`}
+            className={`${styles.aboutText} text-lg leading-relaxed p-8`}
           >
             <span className="text-pink font-accent text-sm uppercase tracking-wider mb-5 block">
               WITNESS STATEMENT:
@@ -96,7 +96,7 @@ const About = () => {
                   {item.title}
                 </h3>
                 <section
-                  className={`${styles.skillsGrid} ${styles.fadeIn} grid grid-cols-2 sm:grid-cols-3 gap-5`}
+                  className={`${styles.skillsGrid} grid grid-cols-2 sm:grid-cols-3 gap-5`}
                 >
                   {item.skills.map((skill, index) => (
                     <SkillItem

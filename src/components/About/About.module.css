@@ -100,8 +100,3 @@
     inset 0 0 20px rgba(0, 0, 0, 0.3),
     0 10px 25px rgba(0, 0, 0, 0.4);
 }
-
-.fadeIn.visible {
-  opacity: 1;
-  transform: translateY(0);
-}

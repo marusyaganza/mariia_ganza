@@ -76,13 +76,3 @@
     transform: translate(-100px, -30px) scale(1.1);
   }
 }
-
-@keyframes flicker {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}

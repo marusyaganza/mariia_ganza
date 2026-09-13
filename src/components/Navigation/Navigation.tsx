@@ -77,7 +77,7 @@ const Navigation = () => {
                 e.preventDefault();
                 handleScrollToSection("projects");
               }}
-              data-number="04."
+              data-number="03."
               className={styles.navLink}
               role="menuitem"
             >
@@ -91,7 +91,7 @@ const Navigation = () => {
                 e.preventDefault();
                 handleScrollToSection("experience");
               }}
-              data-number="03."
+              data-number="04."
               className={styles.navLink}
               role="menuitem"
             >

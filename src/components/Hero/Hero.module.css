@@ -157,28 +157,12 @@
   font-family: var(--font-heading);
 }
 
-/* Animations - using global slideFromShadows keyframe */
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* Mobile responsive styles */
 @media (max-width: 768px) {
   .heroContent {
     flex-direction: column-reverse;
     text-align: center;
     gap: 40px;
-  }
-
-  .profilePhoto {
-    width: 180px;
-    height: 180px;
   }
 }
 
