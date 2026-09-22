@@ -1,14 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
-import { useAudio } from "../../hooks/useAudio";
+import { useEffect, useRef } from "react";
 import styles from "./Contact.module.css";
 
 const Contact = () => {
   const contactRef = useRef<HTMLDivElement>(null);
-  const { play: playEnter } = useAudio("/sound/enter.wav", {
-    volume: 0.4,
-  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,7 +25,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className={`${styles.section} py-32`}>
-      <div className="max-w-6xl mx-auto px-5 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <header>
           <h2 className="font-heading font-bold text-5xl mb-16 text-center relative drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)]">
             Close the Case
@@ -37,7 +33,7 @@ const Contact = () => {
         </header>
         <div
           ref={contactRef}
-          className={`${styles.contactContent} ${styles.fadeIn} text-center max-w-3xl mx-auto relative p-12`}
+          className={`${styles.contactContent} ${styles.fadeIn} text-center max-w-3xl mx-auto relative p-12 max-md:p-6`}
         >
           <span className={styles.subheading}>
             A CLEAR PROBLEM STATEMENT IS A GOOD PLACE TO START

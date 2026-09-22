@@ -26,7 +26,7 @@ const Hero = () => {
       const typeWriter = () => {
         if (i < text.length) {
           subtitle.textContent = text.substring(0, i + 1);
-          subtitle.style.width = (i + 1) * 0.6 + "em";
+          subtitle.style.width = `min(${(i + 1) * 0.6}em, 100%)`;
           i++;
           typewriterTimeoutRef.current = setTimeout(typeWriter, 100);
         } else {
@@ -64,7 +64,7 @@ const Hero = () => {
 
   return (
     <section id="home" className={styles.hero}>
-      <div className="max-w-6xl mx-auto px-5 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
             <span className={styles.caseNumber}>CASE FILE: 2026-001</span>

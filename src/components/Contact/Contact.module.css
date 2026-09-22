@@ -55,6 +55,23 @@
 .buttons {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .subheading {
+    position: static;
+    transform: none;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .button {

@@ -122,6 +122,10 @@
 }
 
 @media (max-width: 768px) {
+  .experienceTimeline {
+    padding-left: 24px;
+  }
+
   .timelineItem:nth-child(odd) .timelineContent,
   .timelineItem:nth-child(even) .timelineContent {
     margin: 0;
@@ -131,16 +135,16 @@
   }
 
   .timelineMarker {
-    left: -12px;
+    left: 0;
     transform: none;
   }
 
   .timelineContent {
-    margin-right: 20px;
+    margin-right: 0;
   }
 
   .experienceTimeline::before {
-    left: -5px;
+    left: 8px;
     transform: none;
   }
 }

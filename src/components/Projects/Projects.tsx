@@ -86,7 +86,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className={`${styles.section} py-32`}>
-      <div className="max-w-6xl mx-auto px-5 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <header>
           <h2 className="font-heading font-bold text-5xl mb-16 text-center relative drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)]">
             Case Files

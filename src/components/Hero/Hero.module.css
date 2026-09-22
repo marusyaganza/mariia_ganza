@@ -46,8 +46,15 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  max-width: 100%;
   position: relative;
   z-index: 2;
+}
+
+.heroText {
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .heroText h1 {
@@ -140,6 +147,7 @@
   overflow: hidden;
   border-right: 3px solid var(--green-light);
   white-space: nowrap;
+  max-width: 100%;
   will-change: width, border-color;
 }
 
@@ -155,15 +163,6 @@
 .highlightName {
   color: var(--green-light);
   font-family: var(--font-heading);
-}
-
-/* Mobile responsive styles */
-@media (max-width: 768px) {
-  .heroContent {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 40px;
-  }
 }
 
 .cvLink {
@@ -190,4 +189,27 @@
   display: flex;
   align-items: center;
   gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .heroContent {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .typewriterText {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .ctaButton {
+    padding: 14px 22px;
+  }
 }

@@ -12,21 +12,18 @@ export const VisualEffectsLayout = ({ children }: VisualEffectsLayoutProps) => {
 
   return (
     <>
-      {/* Film grain and blinds overlay */}
-      <div className={styles.blindsOverlay}></div>
-
-      {/* Spotlight effects */}
-      <div className={`${styles.spotlight} ${styles.spotlight1}`}></div>
-      <div className={`${styles.spotlight} ${styles.spotlight2}`}></div>
-
-      {/* Mouse tracking spotlight */}
-      <div
-        className={styles.mouseSpotlight}
-        style={{
-          left: mousePosition.x + "px",
-          top: mousePosition.y + "px",
-        }}
-      />
+      <div className={styles.effectsLayer}>
+        <div className={styles.blindsOverlay}></div>
+        <div className={`${styles.spotlight} ${styles.spotlight1}`}></div>
+        <div className={`${styles.spotlight} ${styles.spotlight2}`}></div>
+        <div
+          className={styles.mouseSpotlight}
+          style={{
+            left: mousePosition.x + "px",
+            top: mousePosition.y + "px",
+          }}
+        />
+      </div>
 
       {children}
     </>

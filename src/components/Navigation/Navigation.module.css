@@ -8,7 +8,7 @@
     rgba(33, 22, 26, 0.95) 100%
   );
   backdrop-filter: blur(10px);
-  z-index: 1000;
+  z-index: 1002;
   border-bottom: 1px solid rgba(215, 199, 183, 0.1);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
@@ -21,6 +21,17 @@
 .navNotScrolled {
   background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-color) 100%);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.bar {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1002;
 }
 
 .logo {
@@ -72,11 +83,203 @@
   text-shadow: 0 0 10px rgba(255, 232, 31, 0.5);
 }
 
-/* Animations - using global pulse keyframe */
+.menuToggle {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1px solid rgba(3, 140, 51, 0.55);
+  color: var(--green-light);
+  padding: 8px 10px 8px 12px;
+  cursor: pointer;
+  font-family: var(--font-accent);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.35);
+}
 
-/* Mobile responsive styles */
+.menuToggleLabel {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.burger {
+  width: 22px;
+  height: 14px;
+  position: relative;
+  display: inline-block;
+}
+
+.burger span {
+  position: absolute;
+  left: 0;
+  height: 2px;
+  background: var(--yellow);
+  box-shadow: 0 0 8px rgba(255, 232, 31, 0.35);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    width 0.3s ease;
+}
+
+.burger span:nth-child(1) {
+  top: 0;
+  width: 22px;
+}
+
+.burger span:nth-child(2) {
+  top: 6px;
+  width: 14px;
+}
+
+.burger span:nth-child(3) {
+  top: 12px;
+  width: 18px;
+}
+
+.burgerOpen span:nth-child(1) {
+  top: 6px;
+  width: 22px;
+  transform: rotate(45deg);
+}
+
+.burgerOpen span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+
+.burgerOpen span:nth-child(3) {
+  top: 6px;
+  width: 22px;
+  transform: rotate(-45deg);
+}
+
+.caseIndex {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .navLinks {
     display: none;
+  }
+
+  .menuToggle {
+    display: flex;
+  }
+
+  .navMenuOpen {
+    border-bottom-color: var(--green-light);
+  }
+
+  .caseIndex {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1001;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(33, 22, 26, 0.98) 0%,
+        rgba(33, 22, 26, 0.96) 100%
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 8px,
+        rgba(0, 0, 0, 0.12) 8px,
+        rgba(0, 0, 0, 0.12) 10px
+      );
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.35s ease,
+      visibility 0.35s ease;
+  }
+
+  .caseIndexOpen {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .caseIndexPanel {
+    height: 100%;
+    padding: 108px 24px 40px;
+    border-left: 4px solid var(--green-light);
+    box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.45);
+    position: relative;
+    overflow: auto;
+  }
+
+  .caseIndexPanel::before {
+    content: "CONFIDENTIAL";
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-18deg);
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 18vw, 6rem);
+    letter-spacing: 6px;
+    color: var(--pink);
+    opacity: 0.08;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .caseIndexStamp {
+    font-family: var(--font-accent);
+    font-size: 0.75rem;
+    color: var(--yellow);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+
+  .caseIndexFile {
+    font-family: var(--font-accent);
+    font-size: 0.7rem;
+    color: var(--pink);
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    opacity: 0.85;
+  }
+
+  .mobileLinks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .mobileLink {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 8px 0 8px 52px;
+    position: relative;
+    border-bottom: 1px solid rgba(215, 199, 183, 0.12);
+  }
+
+  .mobileLink::before {
+    content: attr(data-number);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-accent);
+    font-size: 0.85rem;
+    color: var(--green-light);
+  }
+
+  .mobileLink:hover,
+  .mobileLink:focus-visible {
+    color: var(--yellow);
+    text-shadow: 0 0 10px rgba(255, 232, 31, 0.5);
+    outline: none;
   }
 }
