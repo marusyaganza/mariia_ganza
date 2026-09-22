@@ -32,15 +32,26 @@ cd mariia_ganza
 
 2. Install dependencies:
 ```bash
-npm install
+yarn
 ```
 
-3. Run the development server:
+3. Configure environment variables:
+
+Copy the public example, then put **real** values in `.env` and `.env.local` (both are gitignored):
+
 ```bash
-npm run dev
+cp .env.example .env
+cp .env.example .env.local
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+`.env.example` only shows the shape of each variable. Next.js loads `.env` for all environments and `.env.local` on top of it. See [Environment variables](#environment-variables).
+
+4. Run the development server:
+```bash
+yarn dev
+```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Content
 Update the content in each component file:
@@ -59,12 +70,30 @@ The noir detective theme is achieved through:
 - Typewriter effects
 - Sound effects
 
+## Environment variables
+
+`.env.example` is committed and contains **example** values only. Real secrets and DSNs belong in `.env` and `.env.local`, which are gitignored.
+
+Next.js load order (later files override earlier ones): `.env`, then `.env.local`.
+
+| Variable | Exposed to the browser | Purpose |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SENTRY_DSN` | Yes | Sentry DSN for client, and fallback for server/edge |
+| `SENTRY_DSN` | No | Optional server/edge DSN override |
+| `SENTRY_ORG` | No | Sentry organization slug for source map uploads |
+| `SENTRY_PROJECT` | No | Sentry project slug for source map uploads |
+| `SENTRY_AUTH_TOKEN` | No | Auth token for uploading source maps |
+
+`NEXT_PUBLIC_` is required for the client bundle (`instrumentation-client.ts`). Values without that prefix stay on the server. Restart `yarn dev` after changing env files.
+
+On Vercel (or similar), add the same keys in the project’s environment settings.
+
 ## Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+- `yarn dev` - Start development server
+- `yarn build` - Build for production
+- `yarn start` - Start production server
+- `yarn lint` - Run ESLint
 
 ## Credits
 
