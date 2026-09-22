@@ -37,7 +37,7 @@ const projects: Project[] = [
       "Cypress",
       "Storybook",
     ],
-    caseLink: "cases/language-learning-platform",
+    caseLink: "/cases/language-learning-platform",
   },
   {
     number: "CASE #002",
