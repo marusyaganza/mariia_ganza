@@ -19,8 +19,7 @@ A modern, noir-themed portfolio website built with Next.js, TypeScript, and Tail
 
 ### Prerequisites
 
-- Node.js 18+ 
-- npm or yarn
+- Node.js 24 and Yarn 4 — both pinned in `package.json`. With [Volta](https://volta.sh) installed, the right versions are picked up automatically; otherwise run `corepack enable` for Yarn.
 
 ### Installation
 
