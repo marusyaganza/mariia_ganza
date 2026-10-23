@@ -16,7 +16,7 @@ const NAV_ITEMS = [
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { play: playPaperSlide } = useAudio("/sound/paper-slide.wav", {
+  const { play: playPaperSlide } = useAudio("/sound/paper-slide.mp3", {
     volume: 0.3,
   });
 
@@ -26,7 +26,7 @@ const Navigation = () => {
       setScrolled(isScrolled);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 

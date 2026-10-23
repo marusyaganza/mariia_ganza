@@ -1,53 +1,37 @@
+import { SITE_DESCRIPTION, SITE_URL } from "@/utils/site";
+
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Mariia  Ganza",
-  jobTitle: "Senior Full-Stack Developer",
-  description:
-    "Digital Detective solving complex problems through code. Specialized in React, TypeScript, Node.js, and modern web technologies.",
-  url: "https://yourname.dev",
-  image: "https://yourname.dev/avatar.webp",
+  name: "Mariia Ganza",
+  jobTitle: "Backend-leaning Fullstack Engineer",
+  description: SITE_DESCRIPTION,
+  url: SITE_URL,
   sameAs: [
     "https://github.com/marusyaganza",
-    "https://linkedin.com/in/mariia-ganza",
+    "https://www.linkedin.com/in/mariia-ganza",
   ],
   knowsAbout: [
-    "JavaScript",
-    "TypeScript",
-    "React",
+    "Python",
+    "FastAPI",
+    "SQLAlchemy",
+    "PostgreSQL",
+    "Redis",
+    "SQL",
+    "REST APIs",
+    "GraphQL",
     "Node.js",
+    "TypeScript",
+    "JavaScript",
+    "React",
     "Next.js",
-    "Tailwind CSS",
-    "Storybook",
-    "MongoDB",
     "Docker",
     "Cypress",
-    "Jest",
-    "Figma",
+    "API design",
   ],
-  hasOccupation: {
-    "@type": "Occupation",
-    name: "Full-Stack Developer",
-    description:
-      "Developing web applications using modern technologies and frameworks",
-    skills: [
-      "Frontend Development",
-      "JavaScript Development",
-      "TypeScript Development",
-      "Docker",
-      "DevOps",
-      "Design Systems",
-    ],
-  },
   alumniOf: {
     "@type": "Organization",
-    name: 'Saint Petersburg State Electrotechnical University "LETI"​',
-  },
-  worksFor: {
-    "@type": "Organization",
-    name: "Epam Systems",
-    description:
-      "Leading complex digital investigations across multiple platforms",
+    name: 'Saint Petersburg State Electrotechnical University "LETI"',
   },
 };
 

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useCallback } from "react";
 import { useAudio } from "../../hooks/useAudio";
 import { scrollToSection } from "../../utils/scrollUtils";
+import { prefersReducedMotion } from "../../utils/motion";
 import styles from "./Hero.module.css";
 
 const Hero = () => {
@@ -10,13 +11,14 @@ const Hero = () => {
   const typewriterTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const cursorIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const initialDelayRef = useRef<NodeJS.Timeout | null>(null);
-  const { play: playTypewriter } = useAudio("/sound/typewriter.wav", {
+  const { play: playTypewriter } = useAudio("/sound/typewriter.mp3", {
     volume: 0.3,
   });
 
   useEffect(() => {
     const subtitle = subtitleRef.current;
-    if (subtitle) {
+    // Reduced motion: leave the full subtitle in place, no typing
+    if (subtitle && !prefersReducedMotion()) {
       const text = subtitle.textContent || "";
       // Keep the text content but set width to 0 to hide it initially
       subtitle.style.width = "0";

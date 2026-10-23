@@ -1,7 +1,4 @@
-"use client";
-
-import { useRef } from "react";
-import { SkillItem } from "@/components/Effects/SkillItem";
+import { Fragment } from "react";
 import styles from "./About.module.css";
 
 const skillsData = [
@@ -41,8 +38,6 @@ const skillsData = [
 ];
 
 const About = () => {
-  const aboutRef = useRef<HTMLDivElement>(null);
-
   return (
     <section id="about" className={`${styles.section} py-32`}>
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -53,7 +48,6 @@ const About = () => {
         </header>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <article
-            ref={aboutRef}
             className={`${styles.aboutText} text-lg leading-relaxed p-8 max-lg:p-6`}
           >
             <span className="text-pink font-accent text-sm uppercase tracking-wider mb-5 block">
@@ -91,23 +85,23 @@ const About = () => {
           <article>
             <h2 className={styles.skillsGridTitle}>EVIDENCE LOCKER</h2>
             {skillsData.map((item) => (
-              <>
+              <Fragment key={item.title}>
                 <h3 className="text-pink font-accent text-sm uppercase tracking-wider mb-3 mt-9 block">
                   {item.title}
                 </h3>
                 <section
                   className={`${styles.skillsGrid} grid grid-cols-2 sm:grid-cols-3 gap-5`}
                 >
-                  {item.skills.map((skill, index) => (
-                    <SkillItem
-                      key={index}
-                      className={`${styles.skillItem} p-4 text-center font-accent text-sm`}
+                  {item.skills.map((skill) => (
+                    <div
+                      key={skill}
+                      className={`skill-item ${styles.skillItem} p-4 text-center font-accent text-sm`}
                     >
                       {skill}
-                    </SkillItem>
+                    </div>
                   ))}
                 </section>
-              </>
+              </Fragment>
             ))}
           </article>
         </div>

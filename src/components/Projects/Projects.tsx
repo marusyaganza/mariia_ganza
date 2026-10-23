@@ -1,9 +1,5 @@
-"use client";
-
-import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { ProjectCard } from "@/components/Effects/ProjectCard";
-import { TechTag } from "@/components/Effects/TechTag";
+import Reveal from "@/components/Reveal/Reveal";
 import styles from "./Projects.module.css";
 
 interface Project {
@@ -13,7 +9,8 @@ interface Project {
   description: string;
   text: string;
   tech: string[];
-  caseLink: string;
+  // Omit until the case-study page exists
+  caseLink?: string;
 }
 
 const projects: Project[] = [
@@ -58,32 +55,10 @@ const projects: Project[] = [
       "API Design",
       "Auth",
     ],
-    caseLink: "cases/star-travel-platform",
   },
 ];
 
 const Projects = () => {
-  const projectRefs = useRef<(HTMLElement | null)[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
-    );
-
-    projectRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="projects" className={`${styles.section} py-32`}>
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -97,16 +72,10 @@ const Projects = () => {
           role="list"
           aria-label="Project portfolio"
         >
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              className={`${styles.projectCard} ${styles.fadeIn}`}
-            >
+          {projects.map((project) => (
+            <Reveal key={project.number} role="listitem">
               <article
-                ref={(el) => {
-                  projectRefs.current[index] = el;
-                }}
-                role="listitem"
+                className={`project-card ${styles.projectCard} h-full`}
               >
                 <div className={styles.projectNumber}>{project.number}</div>
                 <p className="mb-6 text-xs opacity-90 italic uppercase">
@@ -126,19 +95,24 @@ const Projects = () => {
                   role="list"
                   aria-label="Technologies used"
                 >
-                  {project.tech.map((tech, idx) => (
-                    <TechTag key={idx} className={styles.techTag}>
+                  {project.tech.map((tech) => (
+                    <span key={tech} className={`tech-tag ${styles.techTag}`}>
                       {tech}
-                    </TechTag>
+                    </span>
                   ))}
                 </div>
-                <nav className="flex gap-5" aria-label="Project links">
-                  <Link className={styles.projectLink} href={project.caseLink}>
-                    Open case study
-                  </Link>
-                </nav>
+                {project.caseLink && (
+                  <nav className="flex gap-5" aria-label="Project links">
+                    <Link
+                      className={styles.projectLink}
+                      href={project.caseLink}
+                    >
+                      Open case study
+                    </Link>
+                  </nav>
+                )}
               </article>
-            </ProjectCard>
+            </Reveal>
           ))}
         </div>
       </div>

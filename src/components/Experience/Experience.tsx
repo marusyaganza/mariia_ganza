@@ -1,6 +1,4 @@
-"use client";
-
-import { useEffect, useRef } from "react";
+import Reveal from "@/components/Reveal/Reveal";
 import styles from "./Experience.module.css";
 
 interface TimelineItem {
@@ -56,27 +54,6 @@ const experienceData: TimelineItem[] = [
 ];
 
 const Experience = () => {
-  const timelineRefs = useRef<(HTMLElement | null)[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
-    );
-
-    timelineRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="experience" className={`${styles.section} py-32`}>
       <div className="max-w-8xl mx-auto px-6 relative z-10">
@@ -91,12 +68,10 @@ const Experience = () => {
           aria-label="Work experience timeline"
         >
           {experienceData.map((item, index) => (
-            <article
+            <Reveal
+              as="article"
               key={index}
-              className={`${styles.timelineItem} ${styles.fadeIn}`}
-              ref={(el) => {
-                timelineRefs.current[index] = el;
-              }}
+              className={styles.timelineItem}
               role="listitem"
             >
               <div className={styles.timelineMarker}></div>
@@ -141,7 +116,7 @@ const Experience = () => {
                   aria-label="Technologies used"
                 ></div>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>

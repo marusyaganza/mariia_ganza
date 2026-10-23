@@ -124,15 +124,12 @@
   transform: translateX(5px);
 }
 
-.fadeIn {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.fadeIn.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* While one card is hovered, push the others into the background */
+@media (hover: hover) {
+  .projectsGrid:has(.projectCard:hover) .projectCard:not(:hover) {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
 }
 
 /* Mobile responsive styles */

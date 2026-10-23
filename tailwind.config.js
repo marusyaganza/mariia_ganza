@@ -22,9 +22,10 @@ module.exports = {
         case: "var(--border-color)",
       },
       fontFamily: {
-        heading: ["Courier Prime", "monospace"],
-        body: ["Inter", "sans-serif"],
-        accent: ["Fira Mono", "monospace"],
+        // Self-hosted by next/font, see src/app/layout.tsx
+        heading: ["var(--font-heading)", "monospace"],
+        body: ["var(--font-body)", "sans-serif"],
+        accent: ["var(--font-accent)", "monospace"],
       },
     },
   },

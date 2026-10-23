@@ -41,17 +41,6 @@
   letter-spacing: 2px;
 }
 
-.fadeIn {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.fadeIn.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .buttons {
   display: flex;
   justify-content: space-between;

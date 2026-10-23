@@ -1,28 +1,7 @@
-"use client";
-
-import { useEffect, useRef } from "react";
+import Reveal from "@/components/Reveal/Reveal";
 import styles from "./Contact.module.css";
 
 const Contact = () => {
-  const contactRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
-    );
-
-    if (contactRef.current) observer.observe(contactRef.current);
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="contact" className={`${styles.section} py-32`}>
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -31,9 +10,8 @@ const Contact = () => {
             Close the Case
           </h2>
         </header>
-        <div
-          ref={contactRef}
-          className={`${styles.contactContent} ${styles.fadeIn} text-center max-w-3xl mx-auto relative p-12 max-md:p-6`}
+        <Reveal
+          className={`${styles.contactContent} text-center max-w-3xl mx-auto relative p-12 max-md:p-6`}
         >
           <span className={styles.subheading}>
             A CLEAR PROBLEM STATEMENT IS A GOOD PLACE TO START
@@ -75,7 +53,7 @@ const Contact = () => {
               Download CV
             </a>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
