@@ -93,6 +93,11 @@ On Vercel (or similar), add the same keys in the project’s environment setting
 - `yarn build` - Build for production
 - `yarn start` - Start production server
 - `yarn lint` - Run ESLint
+- `yarn type-check` - Run the TypeScript compiler without emitting
+- `yarn test:visual` - Build the site and compare it against the committed screenshots in `tests/` (uses your installed Chrome)
+- `yarn test:visual:update` - Accept the current rendering as the new screenshot baseline
+
+Run `yarn test:visual` before and after dependency upgrades or styling refactors. Screenshots are Linux + Chrome specific; on another OS, record your own baseline first with `yarn test:visual:update`.
 
 ## Credits
 
