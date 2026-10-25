@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal/Reveal";
+import { caseStudyPath, type CaseSlug } from "@/content/cases";
 import styles from "./Projects.module.css";
 
 interface Project {
@@ -9,8 +10,9 @@ interface Project {
   description: string;
   text: string;
   tech: string[];
-  // Omit until the case-study page exists
-  caseLink?: string;
+  // Links the card to its case study; only published cases are valid
+  // (see src/content/cases/index.ts). Omit while there's no case study.
+  caseSlug?: CaseSlug;
 }
 
 const projects: Project[] = [
@@ -34,7 +36,7 @@ const projects: Project[] = [
       "Cypress",
       "Storybook",
     ],
-    caseLink: "/cases/language-learning-platform",
+    caseSlug: "language-learning-platform",
   },
   {
     number: "CASE #002",
@@ -101,11 +103,11 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                {project.caseLink && (
+                {project.caseSlug && (
                   <nav className="flex gap-5" aria-label="Project links">
                     <Link
                       className={styles.projectLink}
-                      href={project.caseLink}
+                      href={caseStudyPath(project.caseSlug)}
                     >
                       Open case study
                     </Link>

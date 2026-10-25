@@ -1,10 +1,15 @@
 import styles from "./CaseStudy.module.css";
 
-const CaseStudyFooter = () => {
+interface CaseStudyFooterProps {
+  caseNumber: string;
+  title: string;
+}
+
+const CaseStudyFooter = ({ caseNumber, title }: CaseStudyFooterProps) => {
   return (
     <footer className={styles.caseFooter}>
-      Case File 001 — Language Learning Platform · Part of the ongoing case
-      files
+      {/* One string, not several JSX text nodes, so it renders as a single text run */}
+      {`Case File ${caseNumber} — ${title} · Part of the ongoing case files`}
     </footer>
   );
 };

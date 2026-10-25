@@ -1,13 +1,4 @@
-export const tocItems = [
-  { id: "snapshot", label: "Project Snapshot" },
-  { id: "scope", label: "Problem & Scope" },
-  { id: "architecture", label: "System at a Glance" },
-  { id: "decisions", label: "Key Decisions" },
-  { id: "evidence", label: "Implementation" },
-  { id: "quality", label: "Quality & Constraints" },
-  { id: "next", label: "What's Next" },
-  { id: "links", label: "Links & Evidence" },
-] as const;
+// Content shown in the case's sections (see Body.tsx)
 
 export const snapshotRows = [
   {
@@ -129,14 +120,6 @@ export const nextItems = [
   "Expand selected automated tests around session auth and review scheduling",
   "Document query and indexing decisions as the PostgreSQL model develops",
   "Decide which stable server components, if any, to release publicly",
-] as const;
-
-export const stackTags = [
-  "FastAPI",
-  "PostgreSQL",
-  "SQLAlchemy",
-  "Redis",
-  "React",
 ] as const;
 
 export const evidenceLinks = [

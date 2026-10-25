@@ -1,14 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { TocItem } from "@/content/cases/types";
 import styles from "./CaseStudy.module.css";
-import { tocItems } from "./languageLearningPlatform";
 
-const CaseTableOfContents = () => {
-  const [activeId, setActiveId] = useState<string>(tocItems[0].id);
+interface CaseTableOfContentsProps {
+  items: readonly TocItem[];
+}
+
+const CaseTableOfContents = ({ items }: CaseTableOfContentsProps) => {
+  const [activeId, setActiveId] = useState<string>(items[0]?.id);
 
   useEffect(() => {
-    const sections = tocItems
+    const sections = items
       .map((item) => document.getElementById(item.id))
       .filter((section): section is HTMLElement => section !== null);
 
@@ -25,11 +29,11 @@ const CaseTableOfContents = () => {
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
-  }, []);
+  }, [items]);
 
   return (
     <nav className={styles.toc} aria-label="On this page">
-      {tocItems.map((item) => (
+      {items.map((item) => (
         <a
           key={item.id}
           href={`#${item.id}`}
