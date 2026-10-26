@@ -5,13 +5,19 @@ interface DecisionRow {
   value: string;
 }
 
+interface DecisionLink {
+  href: string;
+  label: string;
+}
+
 interface DecisionCardProps {
   number: string;
   title: string;
   rows: readonly DecisionRow[];
+  link?: DecisionLink;
 }
 
-const DecisionCard = ({ number, title, rows }: DecisionCardProps) => {
+const DecisionCard = ({ number, title, rows, link }: DecisionCardProps) => {
   return (
     <article className={styles.decisionCard}>
       <span className="mb-2 block font-accent text-[0.8rem] tracking-[1px] text-green-light">
@@ -24,6 +30,11 @@ const DecisionCard = ({ number, title, rows }: DecisionCardProps) => {
           <span>{row.value}</span>
         </div>
       ))}
+      {link && (
+        <a href={link.href} className={`${styles.linkChip} mt-4 inline-block`}>
+          {link.label}
+        </a>
+      )}
     </article>
   );
 };

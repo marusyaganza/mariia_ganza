@@ -47,9 +47,24 @@ const CaseSideRail = ({ meta }: CaseSideRailProps) => {
         <CaseTableOfContents items={meta.toc} />
       </div>
 
-      <a href={meta.repositoryUrl} className={styles.railCta}>
-        View Repository →
-      </a>
+      <div className="flex flex-col gap-3">
+        {meta.demoUrl && (
+          <a
+            href={meta.demoUrl}
+            className={styles.railCta}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open Live Demo →
+          </a>
+        )}
+        <a
+          href={meta.repositoryUrl}
+          className={meta.demoUrl ? styles.railCtaSecondary : styles.railCta}
+        >
+          View Repository →
+        </a>
+      </div>
     </aside>
   );
 };

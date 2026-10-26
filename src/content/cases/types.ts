@@ -14,7 +14,7 @@ export interface CaseStudyMeta {
   // Main heading on the case-study page
   headline: string;
   summary: string;
-  // Badge under the header, e.g. "Active · Portfolio Release"
+  // Badge under the header, e.g. "Private Beta · In Daily Use"
   statusLabel: string;
   // <meta name="description">
   description: string;
@@ -25,6 +25,8 @@ export interface CaseStudyMeta {
   };
   stack: readonly string[];
   toc: readonly TocItem[];
+  // Public demo deployment, if the case has one
+  demoUrl?: string;
   repositoryUrl: string;
 }
 

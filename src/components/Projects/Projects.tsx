@@ -21,7 +21,7 @@ const projects: Project[] = [
     title: "Language Learning Platform",
     status: "Active development",
     description:
-      "A multi-iteration language-learning application developed across Node.js, GraphQL, TypeScript, React, Next.js, and Python/FastAPI.",
+      "Evolving a private language-learning platform from Node.js to FastAPI.",
     text: "The current system focuses on FastAPI, PostgreSQL, SQLAlchemy, Redis, session-based authentication, and a React client. Earlier iterations include a Dockerized GraphQL monorepo with generated types, a Storybook design system, GitHub Actions, unit tests, and Cypress end-to-end tests.",
     tech: [
       "Python",

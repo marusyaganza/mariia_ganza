@@ -1,18 +1,23 @@
 import ArchitectureDiagram from "@/components/CaseStudy/ArchitectureDiagram";
 import CaseBlock from "@/components/CaseStudy/CaseBlock";
 import DecisionCard from "@/components/CaseStudy/DecisionCard";
-import EvidenceGrid from "@/components/CaseStudy/EvidenceGrid";
+import EvolutionTimeline from "@/components/CaseStudy/EvolutionTimeline";
+import PrincipleGrid from "@/components/CaseStudy/PrincipleGrid";
+import ScreenStory, { ScreenShot } from "@/components/CaseStudy/ScreenStory";
 import SnapshotTable from "@/components/CaseStudy/SnapshotTable";
 import styles from "@/components/CaseStudy/CaseStudy.module.css";
 import {
+  captureStory,
+  copyReasons,
+  dataModelTree,
   decisions,
-  evidenceItems,
   evidenceLinks,
-  nextItems,
-  nonGoals,
+  evolution,
+  productPrinciples,
+  settingsScreen,
   snapshotRows,
-  verificationItems,
 } from "./data";
+import architectureDiagram from "./architecture.png";
 
 // Section ids must match meta.toc
 const LanguageLearningBody = () => {
@@ -22,50 +27,103 @@ const LanguageLearningBody = () => {
         <SnapshotTable rows={snapshotRows} />
       </CaseBlock>
 
-      <CaseBlock id="scope" label="Investigation" title="Problem & Scope">
+      <CaseBlock id="motive" label="Motive" title="Why This Project Exists">
         <p>
-          The platform is a private personal language-learning system
-          designed around vocabulary review, configurable spaced repetition,
-          and a workflow that works for short study sessions. The app is
-          intentionally authentication-first because vocabulary, study
-          history, and review data are personal.
+          The Language Learning Platform began as a personal response to
+          limitations I repeatedly encountered in vocabulary apps. I wanted a
+          private space for learning: no public profile, social feed, rankings,
+          shared editing, or pressure to study someone else&apos;s word list.
+          Vocabulary is personal—what a learner captures, why it matters, and
+          the context in which it was encountered are part of the learning
+          record.
         </p>
         <p>
-          The scope is not to reproduce Anki or build a public social
-          platform. The goal is to explore a focused study workflow and use
-          the system as a long-running engineering project across several
-          technology generations.
+          The project has evolved through multiple frontend and backend
+          architectures, but its product principles have remained stable:
+          learner-owned data, reliable vocabulary, spelling-first recall,
+          support for audio, and vocabulary capture in context rather than
+          isolated lists.
         </p>
-        <div className={styles.noteBox}>
-          The scheduling logic is a simplified implementation inspired by
-          the Anki settings and review behavior I personally prefer. It is
-          not a reimplementation of Anki&apos;s full algorithm.
-        </div>
-        <p className={styles.kicker}>Non-goals</p>
-        <ul className={styles.dashList}>
-          {nonGoals.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <p>
+          I originally learned English primarily through textbooks, with limited
+          access to online media. The app&apos;s small game-like exercises,
+          constrained visual treatment, examples, and images deliberately
+          preserve the focused feeling of working through a good language
+          textbook rather than recreating a crowded, gamified social platform.
+        </p>
       </CaseBlock>
 
       <CaseBlock
-        id="architecture"
-        label="Evidence"
-        title="System at a Glance"
+        id="principles"
+        label="Constants"
+        title="Stable Product Principles"
       >
-        <ArchitectureDiagram
-          description="[ Architecture diagram placeholder — replace with exported image ]
+        <p>
+          These principles have held across every version, v1 to v3. Each one
+          carries a technical consequence that later decisions refer back to.
+        </p>
+        <PrincipleGrid items={productPrinciples} />
+      </CaseBlock>
 
-React client → HTTPS/REST → FastAPI (auth · review domain · dictionary adapters · config)
-→ PostgreSQL · Redis · External dictionary APIs"
-          caption=" — reflects the v4 Python/FastAPI backend as of 2026."
+      <CaseBlock
+        id="evolution"
+        label="Timeline"
+        title="How the Platform Evolved"
+      >
+        <p>
+          One product domain, rebuilt as the stack I wanted to learn changed.
+          Each version kept the principles above and tested a different
+          architecture.
+        </p>
+        <EvolutionTimeline entries={evolution} />
+      </CaseBlock>
+
+      <CaseBlock
+        id="data-model"
+        label="Investigation"
+        title="Modeling Personal Vocabulary"
+      >
+        <p>
+          The app treats a word as a personal learning object, not a row in a
+          shared dictionary. Vocabulary is private, contextual, precise, and
+          owned by the learner, so the data model starts from one question:
+        </p>
+        <div className={styles.noteBox}>
+          Which information is canonical and reusable, which is personally
+          owned, and which represents time-based review history?
+        </div>
+        <p>
+          v1 and v2 used MongoDB, where a document per word made it easy to keep
+          adding fields as the product grew. In PostgreSQL, the word is split on
+          purpose: the personal copy, its current schedule, and its review
+          history each have their own lifetime and their own rules.
+        </p>
+        <p className={styles.kicker}>Where each piece lives</p>
+        <pre className={styles.schemaTree}>{dataModelTree}</pre>
+        <p className={styles.kicker}>Why copy instead of reference</p>
+        <ul className={styles.dashList}>
+          {copyReasons.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+        <p className="mt-5">
+          Personal context lives in the learner&apos;s copy: editable
+          definitions, examples with translations, and their own image and
+          caption.
+        </p>
+      </CaseBlock>
+
+      <CaseBlock id="architecture" label="Evidence" title="System at a Glance">
+        <ArchitectureDiagram
+          image={architectureDiagram}
+          alt="System architecture: the React client talks to the FastAPI backend over HTTPS/JSON with a session cookie. The backend uses PostgreSQL for users, words and learning progress, Redis for auth and game sessions, and the Merriam-Webster Dictionary API (recorded fixtures in mock mode)."
+          caption=" — reflects the v3 Python/FastAPI backend as of 2026."
         />
         <p className="mt-6">
-          The backend is the source of truth for domain state and
-          cross-client configuration. The frontend consumes REST contracts
-          rather than shared application types, allowing the client and
-          server to evolve and deploy independently.
+          The backend is the source of truth for domain state and cross-client
+          configuration. The frontend consumes REST contracts rather than shared
+          application types, allowing the client and server to evolve and deploy
+          independently.
         </p>
       </CaseBlock>
 
@@ -80,12 +138,9 @@ React client → HTTPS/REST → FastAPI (auth · review domain · dictionary ada
             number={decision.number}
             title={decision.title}
             rows={decision.rows}
+            link={decision.link}
           />
         ))}
-        <p className="mt-6 text-[0.9rem] text-text-dim">
-          Additional decisions — backend-owned feature configuration and
-          dictionary-provider adapters — documented in the full write-up.
-        </p>
       </CaseBlock>
 
       <CaseBlock
@@ -93,54 +148,19 @@ React client → HTTPS/REST → FastAPI (auth · review domain · dictionary ada
         label="Evidence"
         title="Implementation Highlights"
       >
-        <EvidenceGrid items={evidenceItems} />
-        <p className="mt-6">
-          The dictionary-provider interface defines a stable contract for
-          lookups; each language/provider module handles API-specific
-          parsing and normalization behind that boundary, so a provider
-          change affects one adapter rather than the core domain.
-        </p>
-      </CaseBlock>
-
-      <CaseBlock
-        id="quality"
-        label="Findings"
-        title="Quality, Privacy & Constraints"
-      >
         <p>
-          The live system is intentionally not available as a public
-          anonymous demo. Study history, vocabulary data, and account
-          workflows are protected behind authentication. A case-study
-          walkthrough, screenshots, architecture documentation, and selected
-          public code provide portfolio evidence without publishing personal
-          user data or maintaining a permanently open free-tier environment.
+          Capture in context (P05) end to end: a word met in a book stays tied
+          to that moment, from editing it to practicing it.
         </p>
-        <p className={styles.kicker}>Verification in place</p>
-        <ul className={`${styles.arrowList} ${styles.arrowListBlue}`}>
-          {verificationItems.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </CaseBlock>
-
-      <CaseBlock
-        id="next"
-        label="Findings"
-        title="What Changed & What Comes Next"
-      >
+        <ScreenStory steps={captureStory} />
+        <p className={styles.kicker}>Behind the games</p>
         <p>
-          The current version intentionally favors independently deployable
-          modules, server-owned configuration, relational data modeling, and
-          Python backend depth over retaining every convenience of the
-          earlier shared-type monorepo.
+          Learners tune their own spaced-repetition schedule, with a preview of
+          when a new word comes back.
         </p>
-        <ul
-          className={`${styles.arrowList} ${styles.arrowListGreen} mt-5`}
-        >
-          {nextItems.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <div className="max-w-[760px]">
+          <ScreenShot {...settingsScreen} />
+        </div>
       </CaseBlock>
 
       <CaseBlock id="links" label="Close the Case" title="Links & Evidence">
