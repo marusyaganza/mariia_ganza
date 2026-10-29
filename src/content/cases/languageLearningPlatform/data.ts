@@ -2,6 +2,7 @@
 import { meta } from "./meta";
 import editExampleScreen from "./screens/edit-example.png";
 import gameFeedbackScreen from "./screens/game-feedback.png";
+import searchScreen from "./screens/search.png";
 import spacedRepetitionSettingsScreen from "./screens/spaced-repetition-settings.png";
 import vocabularyScreen from "./screens/vocabulary.png";
 
@@ -28,64 +29,38 @@ export const snapshotRows = [
   {
     label: "Demo policy",
     value:
-      "Separate demo deployment with mock dictionary data, so search covers a fixed set of words. Demo accounts last one week, then the account and all its data are deleted. The personal deployment stays private, with signup closed.",
+      "Public demo runs the same code against the live Merriam-Webster API, with a small search allowance per account. Demo accounts and their application records are deleted after 24 hours. The personal deployment stays private, with signup closed.",
   },
 ] as const;
 
 export const productPrinciples = [
   {
-    title: "Private by default",
+    title: "Private, learner-owned vocabulary",
     product:
-      "A learner’s vocabulary, review history, and study patterns are not visible to other users.",
+      "A learner’s words, review history, and study patterns are visible only to them, and only they can edit them.",
     technical:
-      "Authentication and authorization are foundational; server-side ownership checks matter.",
+      "Every query is scoped to the signed-in user; another learner’s word or game session is reported exactly like one that does not exist.",
   },
   {
-    title: "Learner-owned words",
+    title: "Capture words in context",
     product:
-      "A user may edit their own vocabulary but never another learner’s.",
+      "Words come from real encounters and keep the learner’s own examples, translations, and image.",
     technical:
-      "Clear data ownership model: user → word / card / review history; authorization must be enforced in the backend.",
+      "Each learner keeps a personal copy of a dictionary entry, with editable definitions, examples, and images, alongside fully custom words.",
   },
   {
-    title: "Controlled vocabulary quality",
+    title: "Deliberate recall practice",
     product:
-      "Definitions and spelling should not silently become unreliable through uncontrolled shared edits.",
+      "Spelling is a core learning outcome, hearing a word supports recall, and words come back on a schedule the learner controls.",
     technical:
-      "Separate canonical dictionary-derived data from a learner’s personal notes, examples, and custom entries.",
+      "Explicit answer-comparison rules, audio that plays automatically unless it would give the answer away, and spaced repetition per word and per game, with presets.",
   },
   {
-    title: "Spelling-first learning",
-    product: "Orthography is a core learning outcome, not a secondary detail.",
-    technical:
-      "Input normalization, answer comparison rules, typo policy, and test cases need explicit design.",
-  },
-  {
-    title: "Capture in context",
+    title: "Focused interaction",
     product:
-      "Users should add a word from a real encounter, preserving an example and optional image.",
+      "The interface supports concentration rather than competing for attention.",
     technical:
-      "Data model supports source context, examples, images, and user-created entries—not only a global word list.",
-  },
-  {
-    title: "Audio-assisted recall",
-    product: "Hearing a word aids recognition and memory.",
-    technical:
-      "Audio plays automatically at key moments in each game, except where hearing the word would give away the answer; v3 added a mute mode.",
-  },
-  {
-    title: "Focused visual learning",
-    product:
-      "The UI should support concentration rather than compete for attention.",
-    technical:
-      "Restrained interaction design, limited visual effects, predictable game layout, accessibility-minded presentation.",
-  },
-  {
-    title: "Efficient client–server exchange",
-    product:
-      "The system should not move redundant data merely because a route exists.",
-    technical:
-      "Deliberate API response shapes, pagination/selective fields, caching, and frontend-informed backend design.",
+      "Predictable game layouts, restrained visual effects, and accessibility-minded presentation.",
   },
 ] as const;
 
@@ -139,16 +114,16 @@ export const evolution = [
       "Relational data, caching, generated audio, rate limiting, image optimization",
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Redis"],
     transition:
-      "Wanted deeper Python backend experience, and a client and server that build and deploy independently. Owning the backend also gives more control over security and leaves room for dedicated services, such as image optimization and audio generation.",
+      "Wanted deeper Python backend experience, separate client and server deployments, and explicit control over session handling and backend service boundaries.",
   },
   {
     version: "v3",
     period: "2026 – present",
     title: "FastAPI backend and React client",
-    status: "Current · private beta",
+    status: "Current",
     stage: "current",
     summary:
-      "Separate repositories joined by REST contracts: server-side sessions, configurable spaced repetition, and a private deployment on Cloud Run and Netlify. Six games so far: all four from v1 and two from v2, with the remaining two from v2 being reworked.",
+      "Separate repositories joined by REST contracts: server-side sessions and configurable spaced repetition. The same build runs as a private deployment and a public demo, on Cloud Run and Netlify. Six games so far: all four from v1 and two from v2, with the remaining two from v2 being reworked.",
     experiment:
       "Python backend development, sessions, REST contracts, replaceable adapters",
     stack: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Redis", "React"],
@@ -168,53 +143,98 @@ Redis: game sessions   temporary · deleted 20 minutes after the last answer`;
 export const copyReasons = [
   "The learner can edit their words freely",
   "A dictionary entry changing or disappearing can't change a saved word",
-  "Free API limits never affect saved vocabulary",
+  "Reviewing already-saved vocabulary does not require another dictionary lookup",
 ] as const;
 
 export const decisions = [
   {
     number: "DECISION 01",
-    title: "Move from a GraphQL monorepo to modular backend boundaries",
+    title: "Decoupling client and server builds",
     rows: [
       {
         key: "Context",
         value:
-          "The v2 monorepo held server, client, design system, and shared packages, with generated types shared across boundaries.",
+          "The v2 monorepo held the client, server, design system, and a shared GraphQL schema. Each package generated its TypeScript types from that schema, and Lerna ran builds across the packages.",
       },
       {
         key: "Trade-off",
         value:
-          "Shared types gave atomic changes and coordination, but coupled type generation and build tooling made independent migration harder.",
+          "Shared types made contract changes atomic, but every schema change meant regenerating types in each package before anything built, and moving one side to a new stack meant untangling it from the shared tooling.",
       },
       {
         key: "Result",
         value:
-          "Current system uses a REST contract and modular provider interfaces instead of shared frontend/backend types.",
+          "v3 keeps the client and server in separate repositories with their own build and deployment pipelines. They meet at a documented REST API, and the client validates every response at runtime, so contract changes still need coordination but no shared build step.",
       },
     ],
-    // TODO: real article URL
-    link: { href: "#", label: "Read the article →" },
+  },
+  {
+    number: "DECISION 02",
+    title: "Shaping API responses around the client",
+    rows: [
+      {
+        key: "Context",
+        value:
+          "The system should not move redundant data merely because a route exists.",
+      },
+      {
+        key: "Choice",
+        value:
+          "Response shapes follow the screens that use them: the vocabulary is searched, sorted, and paginated on the server, and a game question carries only what the round needs, with the answer kept on the server.",
+      },
+      {
+        key: "Result",
+        value:
+          "The client caches responses with TanStack Query and checks each one against its schema, so a contract mismatch fails loudly instead of surfacing deep in the UI.",
+      },
+    ],
   },
 ] as const;
 
 export const captureStory = [
   {
     title: "Capture the encounter",
-    text: "While reading The Hobbit, the learner meets “stork”, saves it from the dictionary, and adds the line from the book as their own example.",
+    text: "Selected dictionary data and the learner’s own example become one learner-owned record: a personal copy, linked to its source by the Merriam-Webster id.",
     image: editExampleScreen,
     alt: "Edit dialog for “stork”: the dictionary definition, an example from The Hobbit being typed, and the pronunciation audio and image URLs.",
   },
   {
     title: "Keep it with the word",
-    text: "The example is saved on the learner’s own copy of the word, next to the dictionary definition, pronunciation, and illustration.",
+    text: "Definitions, examples, audio, image, and caption stay editable on the learner’s copy, independent of later changes at the provider.",
     image: vocabularyScreen,
     alt: "Vocabulary page listing saved English words; the “stork” card shows its definition, the Hobbit example, and an illustration.",
   },
   {
     title: "Recall it in practice",
-    text: "After an answer, the game’s feedback screen shows the example, so the learner remembers where they first met the word.",
+    text: "The feedback screen reads the example from the saved copy, reconnecting the answer with where the learner first met the word.",
     image: gameFeedbackScreen,
     alt: "Pick the Word game after a wrong answer: “stork” is marked correct, and the Hobbit example appears below the Continue button.",
+  },
+] as const;
+
+export const productScreen = {
+  image: searchScreen,
+  alt: "Dictionary search for “lever” in the current client: noun and verb entries with pronunciation, audio, definitions, an example, an illustration, word forms, and a save button.",
+} as const;
+
+export const verificationItems = [
+  {
+    claim: "A learner cannot read or modify another learner’s vocabulary",
+    evidence:
+      "A second account gets 404 when editing or deleting the first account’s word and sees an empty vocabulary; the owner’s word is unchanged. Game sessions are checked the same way.",
+    files: ["tests/api/test_words.py", "tests/api/test_games.py"],
+  },
+  {
+    claim: "An answer updates the scheduling state and appends a review record",
+    evidence:
+      "Answering a question saves word_progress for that game type and exactly one review_logs row, before the response is returned.",
+    files: ["tests/api/test_games.py"],
+  },
+  {
+    claim: "Deleting an account removes everything it owns",
+    evidence:
+      "The demo’s cleanup relies on ON DELETE CASCADE: deleting a user through SQL or the ORM removes their words, examples, progress, review history, and settings, while another user’s data survives.",
+    files: ["tests/api/test_user_deletion.py"],
   },
 ] as const;
 
@@ -225,18 +245,31 @@ export const settingsScreen = {
 
 export const evidenceLinks = [
   {
-    href: "https://github.com/marusyaganza/language-power-backend",
+    href: "https://github.com/marusyaganza/language-power-v1-api",
     label: "v1 · Express REST API →",
     external: true,
   },
   {
-    href: "https://github.com/marusyaganza/lp-monorepo",
+    href: "https://github.com/marusyaganza/language-power-v2",
     label: "v2 · GraphQL Monorepo →",
     external: true,
   },
-  { href: meta.repositoryUrl, label: "v3 · FastAPI Backend →", external: true },
+  {
+    href: "https://github.com/marusyaganza/language-power-api",
+    label: "v3 · FastAPI Backend →",
+    external: true,
+  },
   { href: meta.demoUrl, label: "Live Demo →", external: true },
-  { href: "#", label: "Walkthrough Video →" },
+  {
+    href: "https://lp-design-system.netlify.app/?path=/docs/design-system-colors--docs",
+    label: "v2 · Playable Storybook →",
+    external: true,
+  },
+  {
+    href: "https://language-power.netlify.app/api/docs",
+    label: "Live API Docs →",
+    external: true,
+  },
   { href: "#architecture", label: "Architecture Diagram →" },
   { href: "/cv.pdf", label: "Download CV →", external: true },
   {

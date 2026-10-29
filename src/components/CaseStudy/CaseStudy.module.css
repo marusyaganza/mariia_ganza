@@ -25,14 +25,16 @@
   padding: 56px 32px 100px;
   display: grid;
   grid-template-columns: 1fr 280px;
-  gap: 72px;
+  gap: 0 72px;
   align-items: start;
   position: relative;
   z-index: 10;
   line-height: 1.7;
 }
 
+.headerArea,
 .content {
+  grid-column: 1;
   min-width: 0;
 }
 
@@ -401,6 +403,8 @@ html:has(.lightbox[open]) {
 }
 
 .sideRail {
+  grid-column: 2;
+  grid-row: 1 / span 2;
   position: sticky;
   top: 90px;
   display: flex;
@@ -496,9 +500,16 @@ html:has(.lightbox[open]) {
     gap: 48px;
   }
 
+  /* Title and summary first, then case details, then the sections */
+  .content {
+    order: 2;
+  }
+
   .sideRail {
+    grid-column: 1;
+    grid-row: auto;
+    order: 1;
     position: static;
-    order: -1;
     border: 1px solid var(--border-color);
     padding: 24px;
     background: var(--bg-raised);

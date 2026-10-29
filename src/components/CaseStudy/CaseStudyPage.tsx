@@ -14,14 +14,18 @@ const CaseStudyPage = ({ caseStudy: { meta, Body } }: CaseStudyPageProps) => {
   return (
     <>
       <CaseTopBar caseNumber={meta.number} />
+      {/* Header, body and rail are separate grid items so that on mobile
+          the rail sits between the title and the sections */}
       <div className={styles.page}>
-        <div className={styles.content}>
+        <div className={styles.headerArea}>
           <CaseHeader
             caseId={`CASE FILE ${meta.number} · ${meta.title.toUpperCase()}`}
             title={meta.headline}
             summary={meta.summary}
             status={meta.statusLabel}
           />
+        </div>
+        <div className={styles.content}>
           <Body />
         </div>
 

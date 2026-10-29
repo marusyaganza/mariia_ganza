@@ -4,6 +4,7 @@ import DecisionCard from "@/components/CaseStudy/DecisionCard";
 import EvolutionTimeline from "@/components/CaseStudy/EvolutionTimeline";
 import PrincipleGrid from "@/components/CaseStudy/PrincipleGrid";
 import ScreenStory, { ScreenShot } from "@/components/CaseStudy/ScreenStory";
+import ZoomableImage from "@/components/CaseStudy/ZoomableImage";
 import SnapshotTable from "@/components/CaseStudy/SnapshotTable";
 import styles from "@/components/CaseStudy/CaseStudy.module.css";
 import {
@@ -14,8 +15,10 @@ import {
   evidenceLinks,
   evolution,
   productPrinciples,
+  productScreen,
   settingsScreen,
   snapshotRows,
+  verificationItems,
 } from "./data";
 import architectureDiagram from "./architecture.png";
 
@@ -25,6 +28,18 @@ const LanguageLearningBody = () => {
     <>
       <CaseBlock id="snapshot" label="Evidence" title="Project Snapshot">
         <SnapshotTable rows={snapshotRows} />
+        <figure className="mt-8 max-w-[760px]">
+          <ZoomableImage
+            image={productScreen.image}
+            alt={productScreen.alt}
+            sizes="(max-width: 760px) 100vw, 760px"
+            className={styles.screenShot}
+          />
+          <figcaption className={styles.diagramCaption}>
+            Dictionary search in the current client: each result can be saved as
+            the learner&apos;s own copy.
+          </figcaption>
+        </figure>
       </CaseBlock>
 
       <CaseBlock id="motive" label="Motive" title="Why This Project Exists">
@@ -36,13 +51,6 @@ const LanguageLearningBody = () => {
           Vocabulary is personal—what a learner captures, why it matters, and
           the context in which it was encountered are part of the learning
           record.
-        </p>
-        <p>
-          The project has evolved through multiple frontend and backend
-          architectures, but its product principles have remained stable:
-          learner-owned data, reliable vocabulary, spelling-first recall,
-          support for audio, and vocabulary capture in context rather than
-          isolated lists.
         </p>
         <p>
           I originally learned English primarily through textbooks, with limited
@@ -100,6 +108,9 @@ const LanguageLearningBody = () => {
         </p>
         <p className={styles.kicker}>Where each piece lives</p>
         <pre className={styles.schemaTree}>{dataModelTree}</pre>
+        <p className={styles.diagramCaption}>
+          Logical ownership and relationships, not physical table nesting.
+        </p>
         <p className={styles.kicker}>Why copy instead of reference</p>
         <ul className={styles.dashList}>
           {copyReasons.map((item) => (
@@ -107,23 +118,55 @@ const LanguageLearningBody = () => {
           ))}
         </ul>
         <p className="mt-5">
-          Personal context lives in the learner&apos;s copy: editable
-          definitions, examples with translations, and their own image and
-          caption.
+          This duplicates dictionary-derived content, but lets saved vocabulary
+          remain editable and independent of later provider changes. Personal
+          context lives in the learner&apos;s copy: editable definitions,
+          examples with translations, and their own image and caption.
         </p>
+      </CaseBlock>
+
+      <CaseBlock
+        id="verification"
+        label="Evidence"
+        title="How These Boundaries Are Verified"
+      >
+        <p>
+          Each rule above is checked by an automated API test in the v3 backend.
+          The tests call the app over HTTP against real PostgreSQL and Redis,
+          and run in CI on every push.
+        </p>
+        <ul className={`${styles.arrowList} ${styles.arrowListBlue}`}>
+          {verificationItems.map((item) => (
+            <li key={item.claim}>
+              <strong className="block font-medium">{item.claim}</strong>
+              <span className="block text-[0.92rem] text-text-dim">
+                {item.evidence}
+              </span>
+              <span className="mt-1 block font-accent text-[0.78rem] text-blue">
+                {item.files.join(" · ")}
+              </span>
+            </li>
+          ))}
+        </ul>
       </CaseBlock>
 
       <CaseBlock id="architecture" label="Evidence" title="System at a Glance">
         <ArchitectureDiagram
           image={architectureDiagram}
-          alt="System architecture: the React client talks to the FastAPI backend over HTTPS/JSON with a session cookie. The backend uses PostgreSQL for users, words and learning progress, Redis for auth and game sessions, and the Merriam-Webster Dictionary API (recorded fixtures in mock mode)."
+          alt="System architecture: the React client talks to the FastAPI backend over HTTPS/JSON with a session cookie. The backend uses PostgreSQL for users, words and learning progress, Redis for auth and game sessions, and the Merriam-Webster Dictionary API (made-up entries in tests and local development)."
           caption=" — reflects the v3 Python/FastAPI backend as of 2026."
         />
         <p className="mt-6">
-          The backend is the source of truth for domain state and cross-client
-          configuration. The frontend consumes REST contracts rather than shared
-          application types, allowing the client and server to evolve and deploy
-          independently.
+          The React client talks to FastAPI over HTTPS with a session cookie.
+          FastAPI keeps users, words, and learning progress in PostgreSQL, auth
+          and game sessions in Redis, and looks words up in the Merriam-Webster
+          API. The backend is the source of truth for domain state and
+          cross-client configuration.
+        </p>
+        <p>
+          The client and server have separate build and deployment pipelines and
+          communicate through a documented REST API. Changes still require
+          coordination when the API contract changes.
         </p>
       </CaseBlock>
 
@@ -138,7 +181,6 @@ const LanguageLearningBody = () => {
             number={decision.number}
             title={decision.title}
             rows={decision.rows}
-            link={decision.link}
           />
         ))}
       </CaseBlock>
@@ -149,14 +191,15 @@ const LanguageLearningBody = () => {
         title="Implementation Highlights"
       >
         <p>
-          Capture in context (P05) end to end: a word met in a book stays tied
-          to that moment, from editing it to practicing it.
+          Capture words in context (P02) end to end: a word met in a book stays
+          tied to that moment, from editing it to practicing it.
         </p>
         <ScreenStory steps={captureStory} />
         <p className={styles.kicker}>Behind the games</p>
         <p>
-          Learners tune their own spaced-repetition schedule, with a preview of
-          when a new word comes back.
+          Settings change how the next review is scheduled: a change applies to
+          each word the next time it is answered, while reviews already
+          scheduled keep their dates.
         </p>
         <div className="max-w-[760px]">
           <ScreenShot {...settingsScreen} />

@@ -6,7 +6,7 @@ export const meta: CaseStudyMeta = {
   headline:
     "Evolving a private language-learning platform from Node.js to FastAPI",
   summary:
-    "A private vocabulary and spaced-repetition application developed across three versions and one abandoned experiment: Node.js REST, a TypeScript GraphQL monorepo, an unfinished Next.js rewrite with PostgreSQL and Prisma, and the current Python/FastAPI backend. This case study examines what each version solved, where its architecture created friction, and why the current implementation uses PostgreSQL, SQLAlchemy, Redis, REST contracts, and modular provider adapters.",
+    "A private vocabulary application for saving words in context and practicing them through configurable spaced repetition. Built and redesigned since 2019, it now uses a Python/FastAPI backend and React client. This case study follows the product constraints, data-model decisions, and architectural trade-offs behind that evolution.",
   statusLabel: "Active · Portfolio Release",
   description:
     "A multi-iteration, authenticated language-learning application. Current implementation: Python/FastAPI backend with PostgreSQL, SQLAlchemy, Redis, session-based authentication, and a React client.",
@@ -22,12 +22,13 @@ export const meta: CaseStudyMeta = {
     { id: "principles", label: "Product Principles" },
     { id: "evolution", label: "Evolution" },
     { id: "data-model", label: "Data Model" },
+    { id: "verification", label: "Verification" },
     { id: "architecture", label: "System at a Glance" },
     { id: "decisions", label: "Key Decisions" },
     { id: "evidence", label: "Implementation" },
     { id: "links", label: "Links & Evidence" },
   ],
-  // TODO: real demo URL
-  demoUrl: "#",
-  repositoryUrl: "https://github.com/marusyaganza/py-lp",
+  demoUrl: "https://language-power.netlify.app",
+  // Several repositories (v1–v3), so the rail points at the links section
+  repositoryUrl: "#links",
 };
