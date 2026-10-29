@@ -1,4 +1,4 @@
-# Digital Detective Portfolio
+# Mariia Ganza Portfolio
 
 A modern, noir-themed portfolio website built with Next.js, TypeScript, and Tailwind CSS. This portfolio showcases web development projects and skills with a unique detective/mystery theme.
 

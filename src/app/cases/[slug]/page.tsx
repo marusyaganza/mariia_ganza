@@ -27,12 +27,27 @@ export async function generateMetadata({
   if (!caseStudy) return {};
 
   const { meta } = caseStudy;
+  const title = `Case File ${meta.number} · ${meta.title}`;
+  // getCaseStudy found it, so slug is a known CaseSlug
+  const path = caseStudyPath(slug as CaseSlug);
   return {
-    title: `Case File ${meta.number} — ${meta.title}`,
+    title,
     description: meta.description,
-    alternates: {
-      // getCaseStudy found it, so slug is a known CaseSlug
-      canonical: caseStudyPath(slug as CaseSlug),
+    alternates: { canonical: path },
+    // Set in full: a page's openGraph replaces the layout's instead of
+    // merging with it. The image comes from ./opengraph-image.tsx
+    openGraph: {
+      type: "article",
+      locale: "en_US",
+      url: path,
+      siteName: "Mariia Ganza Portfolio",
+      title,
+      description: meta.description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: meta.description,
     },
   };
 }

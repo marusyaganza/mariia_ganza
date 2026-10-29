@@ -24,8 +24,7 @@ export default function NotFound() {
           <p className="font-body text-lg text-[var(--text-color)] opacity-80 mb-8">
             &quot;The evidence you&apos;re looking for has gone missing. This
             case file appears to have been misplaced or never existed in the
-            first place. The digital detective is on the case, but for now, this
-            trail has gone cold.&quot;
+            first place. For now, this trail has gone cold.&quot;
           </p>
 
           <div className="bg-gradient-to-br from-[rgba(215,199,183,0.06)] to-[rgba(215,199,183,0.02)] border border-[rgba(215,199,183,0.15)] p-6 rounded-none relative overflow-hidden shadow-[var(--shadow-noir)] mb-8">

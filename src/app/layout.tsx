@@ -24,13 +24,12 @@ const firaMono = Fira_Mono({
   display: "swap",
 });
 
-const TITLE =
-  "Mariia Ganza - Digital Detective | Backend-leaning Fullstack Engineer";
+const TITLE = "Mariia Ganza | Backend-leaning Fullstack Engineer";
 
 export const metadata: Metadata = {
   title: {
     default: TITLE,
-    template: "%s | Mariia Ganza - Digital Detective",
+    template: "%s | Mariia Ganza",
   },
   description: SITE_DESCRIPTION,
   keywords: [
@@ -48,7 +47,6 @@ export const metadata: Metadata = {
     "Node.js",
     "API Design",
     "Portfolio",
-    "Digital Detective",
   ],
   authors: [{ name: "Mariia Ganza" }],
   creator: "Mariia Ganza",
@@ -63,8 +61,11 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/icon-192.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
   },
   manifest: "/manifest.json",
   openGraph: {
@@ -74,20 +75,12 @@ export const metadata: Metadata = {
     title: TITLE,
     description: SITE_DESCRIPTION,
     siteName: "Mariia Ganza Portfolio",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Mariia Ganza - Digital Detective Portfolio",
-      },
-    ],
+    // The image comes from app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -109,7 +102,7 @@ export const metadata: Metadata = {
 
 // Next.js adds width=device-width, initial-scale=1 automatically
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: "#21161a",
   colorScheme: "dark",
 };
 

@@ -37,10 +37,9 @@ export default function Error({
           </h2>
 
           <p className="font-body text-lg text-[var(--text-color)] opacity-80 mb-8">
-            &ldquo;The digital detective has encountered an unexpected error in
-            the system. Something has gone wrong in the code, and the
-            investigation has been temporarily suspended. The case remains
-            unsolved, but we&apos;re working on it.&rdquo;
+            &ldquo;Something has gone wrong in the code, and the investigation
+            has been temporarily suspended. The case remains unsolved, but
+            we&apos;re working on it.&rdquo;
           </p>
 
           <div className="bg-gradient-to-br from-[rgba(229,87,106,0.1)] to-[rgba(229,87,106,0.05)] border border-[rgba(229,87,106,0.3)] p-6 rounded-none relative overflow-hidden shadow-[var(--shadow-noir)] mb-8">
@@ -81,9 +80,8 @@ export default function Error({
 
           <div className="mt-8 p-4 bg-[rgba(143,189,198,0.1)] border border-[rgba(143,189,198,0.2)]">
             <p className="font-body text-sm text-[var(--text-color)] opacity-80">
-              If this error persists, the digital detective may need to
-              investigate further. Consider refreshing the page or returning to
-              the main case files.
+              If this error persists, consider refreshing the page or returning
+              to the main case files.
             </p>
           </div>
         </div>

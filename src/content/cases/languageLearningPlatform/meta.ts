@@ -9,7 +9,7 @@ export const meta: CaseStudyMeta = {
     "A private vocabulary application for saving words in context and practicing them through configurable spaced repetition. Built and redesigned since 2019, it now uses a Python/FastAPI backend and React client. This case study follows the product constraints, data-model decisions, and architectural trade-offs behind that evolution.",
   statusLabel: "Active · Portfolio Release",
   description:
-    "A multi-iteration, authenticated language-learning application. Current implementation: Python/FastAPI backend with PostgreSQL, SQLAlchemy, Redis, session-based authentication, and a React client.",
+    "Case study: a private vocabulary app for saving words in context and practicing them with spaced repetition, rebuilt from Node.js to FastAPI, PostgreSQL, and React.",
   details: {
     role: "Fullstack Developer",
     timeframe: "2019 – present",

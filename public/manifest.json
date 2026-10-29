@@ -1,36 +1,31 @@
 {
   "name": "Mariia Ganza - Backend-leaning Fullstack Engineer Portfolio",
-  "short_name": "Backend-leaning Fullstack Engineer",
+  "short_name": "Mariia Ganza",
   "description": "Backend-leaning Fullstack Engineer | Python, FastAPI, TypeScript, React, Node.js",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#0a0a0a",
-  "orientation": "portrait-primary",
+  "background_color": "#21161a",
+  "theme_color": "#21161a",
   "icons": [
     {
       "src": "/favicon.ico",
-      "sizes": "any",
+      "sizes": "16x16 32x32 48x48",
       "type": "image/x-icon"
     },
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     }
   ],
-  "categories": [
-    "portfolio",
-    "developer",
-    "technology"
-  ],
+  "categories": ["portfolio", "developer", "technology"],
   "lang": "en",
   "dir": "ltr"
 }

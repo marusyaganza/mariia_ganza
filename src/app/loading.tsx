@@ -16,8 +16,8 @@ export default function Loading() {
           </h1>
 
           <p className="font-body text-lg text-[var(--text-color)] opacity-80 max-w-md mx-auto">
-            &quot;The digital detective is gathering evidence. Please stand by
-            while the case files are being assembled.&quot;
+            &quot;Gathering the evidence. Please stand by while the case files
+            are being assembled.&quot;
           </p>
 
           <div className="flex justify-center mt-8">
