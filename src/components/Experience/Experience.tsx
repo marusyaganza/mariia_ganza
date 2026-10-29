@@ -62,18 +62,9 @@ const Experience = () => {
             Experience Record
           </h2>
         </header>
-        <div
-          className={styles.experienceTimeline}
-          role="list"
-          aria-label="Work experience timeline"
-        >
+        <div className={styles.experienceTimeline}>
           {experienceData.map((item, index) => (
-            <Reveal
-              as="article"
-              key={index}
-              className={styles.timelineItem}
-              role="listitem"
-            >
+            <Reveal as="article" key={index} className={styles.timelineItem}>
               <div className={styles.timelineMarker}></div>
               <div className={styles.timelineContent}>
                 <span className={styles.recordNumber}>
@@ -93,28 +84,29 @@ const Experience = () => {
                 </header>
                 <div className="mb-5 leading-relaxed">
                   <p>{item.description}</p>
-                  <ul
-                    className="flex flex-col gap-2 mt-4"
-                    role="list"
-                    aria-label="Key achievements"
-                  >
-                    {item.achievements && <h3>Selected work:</h3>}
-                    {item.achievements &&
-                      item.achievements.map((achievement, idx) => (
-                        <li
-                          key={idx}
-                          className="font-accent text-sm opacity-80"
-                        >
-                          {achievement}
-                        </li>
-                      ))}
-                  </ul>
+                  {item.achievements && (
+                    <div className="flex flex-col gap-2 mt-4">
+                      <p id={`experience-${index}-achievements`}>
+                        Selected work:
+                      </p>
+                      {/* role="list" keeps list semantics in Safari, which drops them when list-style is none */}
+                      <ul
+                        className="flex flex-col gap-2"
+                        role="list"
+                        aria-labelledby={`experience-${index}-achievements`}
+                      >
+                        {item.achievements.map((achievement, idx) => (
+                          <li
+                            key={idx}
+                            className="font-accent text-sm opacity-80"
+                          >
+                            {achievement}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-                <div
-                  className="flex flex-wrap gap-2.5"
-                  role="list"
-                  aria-label="Technologies used"
-                ></div>
               </div>
             </Reveal>
           ))}

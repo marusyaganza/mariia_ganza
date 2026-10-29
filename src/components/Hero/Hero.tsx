@@ -1,61 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useCallback } from "react";
 import { useAudio } from "../../hooks/useAudio";
 import { scrollToSection } from "../../utils/scrollUtils";
-import { prefersReducedMotion } from "../../utils/motion";
 import styles from "./Hero.module.css";
 
 const Hero = () => {
-  const subtitleRef = useRef<HTMLHeadingElement>(null);
-  const typewriterTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const cursorIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const initialDelayRef = useRef<NodeJS.Timeout | null>(null);
   const { play: playTypewriter } = useAudio("/sound/typewriter.mp3", {
     volume: 0.3,
   });
-
-  useEffect(() => {
-    const subtitle = subtitleRef.current;
-    // Reduced motion: leave the full subtitle in place, no typing
-    if (subtitle && !prefersReducedMotion()) {
-      const text = subtitle.textContent || "";
-      // Keep the text content but set width to 0 to hide it initially
-      subtitle.style.width = "0";
-      subtitle.style.borderRight = "3px solid var(--green-light)";
-
-      let i = 0;
-      const typeWriter = () => {
-        if (i < text.length) {
-          subtitle.textContent = text.substring(0, i + 1);
-          subtitle.style.width = `min(${(i + 1) * 0.6}em, 100%)`;
-          i++;
-          typewriterTimeoutRef.current = setTimeout(typeWriter, 100);
-        } else {
-          cursorIntervalRef.current = setInterval(() => {
-            subtitle.style.borderRightColor =
-              subtitle.style.borderRightColor === "transparent"
-                ? "var(--green-light)"
-                : "transparent";
-          }, 800);
-        }
-      };
-
-      initialDelayRef.current = setTimeout(typeWriter, 2000);
-    }
-
-    return () => {
-      if (typewriterTimeoutRef.current) {
-        clearTimeout(typewriterTimeoutRef.current);
-      }
-      if (cursorIntervalRef.current) {
-        clearInterval(cursorIntervalRef.current);
-      }
-      if (initialDelayRef.current) {
-        clearTimeout(initialDelayRef.current);
-      }
-    };
-  }, []);
 
   const handleScrollToSection = useCallback(
     (sectionId: string) => {
@@ -74,7 +27,7 @@ const Hero = () => {
               I&apos;m{" "}
               <span className={styles.highlightName}>Mariia Ganza</span>
             </h1>
-            <h2 ref={subtitleRef} className={styles.typewriterText}>
+            <h2 className={styles.roleTitle}>
               Backend-leaning Fullstack Engineer
             </h2>
             <p className={styles.subtitle}>

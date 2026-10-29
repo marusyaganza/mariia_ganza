@@ -104,7 +104,7 @@ const Navigation = () => {
         aria-label="Main navigation"
       >
         <div className={styles.bar}>
-          <div className={styles.logo} role="banner">
+          <div className={styles.logo}>
             M.G.
           </div>
           <ul className={styles.navLinks} role="menubar">

@@ -92,17 +92,18 @@ const Projects = () => {
                   {project.description}
                 </blockquote>
                 <p className="mb-6 opacity-90">{project.text}</p>
-                <div
+                {/* role="list" keeps list semantics in Safari, which drops them when list-style is none */}
+                <ul
                   className="flex flex-wrap gap-3 mb-6"
                   role="list"
                   aria-label="Technologies used"
                 >
                   {project.tech.map((tech) => (
-                    <span key={tech} className={`tech-tag ${styles.techTag}`}>
+                    <li key={tech} className={`tech-tag ${styles.techTag}`}>
                       {tech}
-                    </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
                 {project.caseSlug && (
                   <nav className="flex gap-5" aria-label="Project links">
                     <Link
