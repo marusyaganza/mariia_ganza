@@ -30,12 +30,18 @@ export async function generateMetadata({
   const title = `Case File ${meta.number} · ${meta.title}`;
   // getCaseStudy found it, so slug is a known CaseSlug
   const path = caseStudyPath(slug as CaseSlug);
+  const ogImage = {
+    url: meta.ogImage.image.src,
+    width: meta.ogImage.image.width,
+    height: meta.ogImage.image.height,
+    alt: meta.ogImage.alt,
+  };
   return {
     title,
     description: meta.description,
     alternates: { canonical: path },
     // Set in full: a page's openGraph replaces the layout's instead of
-    // merging with it. The image comes from ./opengraph-image.tsx
+    // merging with it
     openGraph: {
       type: "article",
       locale: "en_US",
@@ -43,11 +49,13 @@ export async function generateMetadata({
       siteName: "Mariia Ganza Portfolio",
       title,
       description: meta.description,
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: meta.description,
+      images: [ogImage],
     },
   };
 }

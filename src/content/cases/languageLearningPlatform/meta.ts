@@ -1,4 +1,5 @@
 import type { CaseStudyMeta } from "../types";
+import ogScreen from "./screens/og.jpg";
 
 export const meta: CaseStudyMeta = {
   number: "001",
@@ -29,6 +30,9 @@ export const meta: CaseStudyMeta = {
     { id: "links", label: "Links & Evidence" },
   ],
   demoUrl: "https://language-power.netlify.app",
-  // Several repositories (v1–v3), so the rail points at the links section
   repositoryUrl: "https://github.com/marusyaganza/language-power-api",
+  ogImage: {
+    image: ogScreen,
+    alt: "Dictionary search for “lever” in the language learning platform: definitions, an example, and an illustration.",
+  },
 };

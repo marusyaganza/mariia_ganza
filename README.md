@@ -23,7 +23,7 @@ My personal portfolio site: a single page with my background, skills, projects, 
 - Home page sections: hero, about and skills, project cards, experience timeline and contact, each wrapped in its own error boundary
 - Case study pages at `/cases/<slug>`, with a table of contents, architecture diagram, screenshots that open full size, and links to the evidence
 - Every page is prerendered as static HTML at build time
-- Generated Open Graph images for the home page and for each case study, a sitemap that lists every published case, `robots.txt` and JSON-LD structured data
+- Screenshot-based Open Graph images for the home page and for each case study, a sitemap that lists every published case, `robots.txt` and JSON-LD structured data
 - Downloadable CV (`public/Mariia_Ganza_CV.pdf`)
 - Theme effects: film grain, venetian-blind shadows, spotlights (one follows the cursor), a blinking caret under the hero title, and an occasional "faulty neon" flicker on skill and tech tags
 - Sound effects on navigation clicks, loaded only on the first play
@@ -45,12 +45,12 @@ My personal portfolio site: a single page with my background, skills, projects, 
 
 | Path | Responsibility |
 | --- | --- |
-| `src/app` | Routes: home page, `cases/[slug]`, error and 404 screens, Open Graph images, sitemap and robots |
+| `src/app` | Routes: home page, `cases/[slug]`, error and 404 screens, the home Open Graph image, sitemap and robots |
 | `src/components` | One folder per home page section (`Hero`, `About`, `Projects`, `Experience`, `Contact`), plus `Navigation`, `Footer`, `Layout` (theme effects), `Reveal` (fade-in on scroll) and `ErrorBoundary` |
 | `src/components/CaseStudy` | Page shell and building blocks shared by every case study: header, side rail, table of contents, decision cards, timeline, screenshots |
 | `src/content/cases` | The case studies. Each one is a folder with `meta.ts`, `Body.tsx`, its data and images, registered in `index.ts` |
 | `src/hooks` | Sound effects and the ambient flicker |
-| `src/utils` | Site URL and description, scrolling, reduced-motion check, Open Graph image helpers, Sentry options |
+| `src/utils` | Site URL and description, scrolling, reduced-motion check, Sentry options |
 | `src/instrumentation*.ts`, `sentry.*.config.ts` | Sentry setup for the browser, server and edge runtimes |
 | `public` | CV, icons, web manifest and sound files |
 | `tests` | Playwright visual tests and their baseline screenshots |
@@ -106,7 +106,7 @@ A case study is a folder in `src/content/cases`:
 - `Body.tsx`: the sections, built from the components in `src/components/CaseStudy`. Each section's `id` must match an entry in `meta.toc`
 - `data.ts` and images: the content the sections render
 
-To publish one, add it to the registry in `src/content/cases/index.ts`. Its key becomes the URL slug. The page, its Open Graph image and its sitemap entry follow from the registry. To link a project card to it, set `caseSlug` on the card in `Projects.tsx`. Only registered slugs type-check, so a card can't point at a case that doesn't exist. A card without a case study can set `repositoryUrl` instead.
+To publish one, add it to the registry in `src/content/cases/index.ts`. Its key becomes the URL slug. The page and its sitemap entry follow from the registry; its link preview is the 1200×630 `ogImage` set in the case's `meta.ts`. To link a project card to it, set `caseSlug` on the card in `Projects.tsx`. Only registered slugs type-check, so a card can't point at a case that doesn't exist. A card without a case study can set `repositoryUrl` instead.
 
 Published so far:
 

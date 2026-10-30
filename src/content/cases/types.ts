@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import type { ComponentType } from "react";
 
 export interface TocItem {
@@ -28,6 +29,11 @@ export interface CaseStudyMeta {
   // Public demo deployment, if the case has one
   demoUrl?: string;
   repositoryUrl: string;
+  // Link preview image, 1200×630
+  ogImage: {
+    image: StaticImageData;
+    alt: string;
+  };
 }
 
 export interface CaseStudy {
