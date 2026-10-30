@@ -1,10 +1,8 @@
 # Mariia Ganza Portfolio
 
-A modern, noir-themed portfolio website built with Next.js, TypeScript, and Tailwind CSS. This portfolio showcases web development projects and skills with a unique detective/mystery theme.
+My personal portfolio site: a single page with my background, skills, projects, work history and contact links, plus long-form case studies of individual projects. It is built with Next.js, TypeScript and Tailwind CSS, in a noir detective theme: projects are "case files", the skills panel is the "evidence locker", and the work history is an "experience record".
 
-## Live Preview
-
-🔗 **[View Live Site](https://mariia-ganza.vercel.app)** 
+**Live site: [mariia-ganza.vercel.app](https://mariia-ganza.vercel.app)**
 
 ![Home page: "I'm Mariia Ganza, Backend-leaning Fullstack Engineer" hero in the dark noir theme, with the case-file navigation](docs/screenshots/home-desktop.webp)
 
@@ -14,99 +12,157 @@ A modern, noir-themed portfolio website built with Next.js, TypeScript, and Tail
   <img src="docs/screenshots/mobile.webp" width="600" alt="Mobile layout: the home page next to the open Case Index menu" />
 </p>
 
-## Tech Stack
+## Status
 
-- **Framework**: Next.js 15+ with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS + Custom CSS
-- **Fonts**: Google Fonts (Courier Prime, Inter, Fira Mono)
+- In active development
+- Deployed on Vercel at [mariia-ganza.vercel.app](https://mariia-ganza.vercel.app) (`SITE_URL` in `src/utils/site.ts`)
+- One published case study, the [Language Learning Platform](#case-studies). Stars Travel has a project card that links to its repository
 
-## Getting Started
+## Features
 
-### Prerequisites
+- Home page sections: hero, about and skills, project cards, experience timeline and contact, each wrapped in its own error boundary
+- Case study pages at `/cases/<slug>`, with a table of contents, architecture diagram, screenshots that open full size, and links to the evidence
+- Every page is prerendered as static HTML at build time
+- Generated Open Graph images for the home page and for each case study, a sitemap that lists every published case, `robots.txt` and JSON-LD structured data
+- Downloadable CV (`public/Mariia_Ganza_CV.pdf`)
+- Theme effects: film grain, venetian-blind shadows, spotlights (one follows the cursor), a blinking caret under the hero title, and an occasional "faulty neon" flicker on skill and tech tags
+- Sound effects on navigation clicks, loaded only on the first play
+- With reduced motion turned on in the OS, animations jump to their end state and the random effects are off
 
-- Node.js 24 and Yarn 4 — both pinned in `package.json`. With [Volta](https://volta.sh) installed, the right versions are picked up automatically; otherwise run `corepack enable` for Yarn.
+## Tech stack
 
-### Installation
+- Next.js 16 (App Router, Turbopack)
+- React 19
+- TypeScript (strict)
+- Tailwind CSS 3, together with CSS modules for the theme effects
+- Fonts from Google Fonts through `next/font`: Courier Prime (headings), Inter (body text), Fira Mono (labels)
+- Sentry 11 (`@sentry/nextjs`) for error reporting
+- Playwright for visual regression tests
+- ESLint 10 (flat config, `eslint-config-next`)
+- Volta with Node `24.19.0` and Yarn `4.18.1`
 
-1. Clone the repository:
-```bash
-git clone git@github.com:marusyaganza/mariia_ganza.git
-cd mariia_ganza
-```
+## Project structure
 
-2. Install dependencies:
-```bash
-yarn
-```
+| Path | Responsibility |
+| --- | --- |
+| `src/app` | Routes: home page, `cases/[slug]`, error and 404 screens, Open Graph images, sitemap and robots |
+| `src/components` | One folder per home page section (`Hero`, `About`, `Projects`, `Experience`, `Contact`), plus `Navigation`, `Footer`, `Layout` (theme effects), `Reveal` (fade-in on scroll) and `ErrorBoundary` |
+| `src/components/CaseStudy` | Page shell and building blocks shared by every case study: header, side rail, table of contents, decision cards, timeline, screenshots |
+| `src/content/cases` | The case studies. Each one is a folder with `meta.ts`, `Body.tsx`, its data and images, registered in `index.ts` |
+| `src/hooks` | Sound effects and the ambient flicker |
+| `src/utils` | Site URL and description, scrolling, reduced-motion check, Open Graph image helpers, Sentry options |
+| `src/instrumentation*.ts`, `sentry.*.config.ts` | Sentry setup for the browser, server and edge runtimes |
+| `public` | CV, icons, web manifest and sound files |
+| `tests` | Playwright visual tests and their baseline screenshots |
+| `docs/screenshots` | Screenshots used in this README |
 
-3. Configure environment variables:
+## Requirements
 
-Copy the public example, then put **real** values in `.env` and `.env.local` (both are gitignored):
+- [Volta](https://volta.sh/)
+- Node.js `24.19.0`
+- Yarn `4.18.1`
+- Google Chrome, for the visual tests only
 
-```bash
-cp .env.example .env
-cp .env.example .env.local
-```
+Both versions are pinned in the `volta` field of `package.json`, so Volta selects them automatically inside the project directory. Without Volta, install Node 24 another way and run `corepack enable`, which picks up Yarn from the `packageManager` field.
 
-`.env.example` only shows the shape of each variable. Next.js loads `.env` for all environments and `.env.local` on top of it. See [Environment variables](#environment-variables).
+## Local development
 
-4. Run the development server:
-```bash
-yarn dev
-```
+1. Install [Volta](https://volta.sh/).
+2. Install dependencies from the lockfile:
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+   ```bash
+   yarn install --immutable
+   ```
 
-### Content
-Update the content in each component file:
-- Personal information in `Hero.tsx`
-- Skills in `About.tsx`
-- Experience in `Experience.tsx`
-- Projects in `Projects.tsx`
-- Contact information in `Contact.tsx`
+3. Start the dev server:
 
-### Styling
-The noir detective theme is achieved through:
-- Custom CSS with film grain overlays
-- Venetian blinds effect
-- Spotlight animations
-- Dramatic lighting gradients
-- Typewriter effects
-- Sound effects
+   ```bash
+   yarn dev
+   ```
 
-## Environment variables
+   The site runs on `http://localhost:3000`. No environment variables are needed: without a Sentry DSN, error reporting is simply off.
 
-`.env.example` is committed and contains **example** values only. Real secrets and DSNs belong in `.env` and `.env.local`, which are gitignored.
+To check a production build locally, run `yarn build` and then `yarn start`.
 
-Next.js load order (later files override earlier ones): `.env`, then `.env.local`.
+## Content
+
+The home page content lives in the section components:
+
+| What | Where |
+| --- | --- |
+| Hero title and introduction | `src/components/Hero/Hero.tsx` |
+| About text and skills | `src/components/About/About.tsx` |
+| Project cards | `src/components/Projects/Projects.tsx` |
+| Work history and education | `src/components/Experience/Experience.tsx` |
+| Contact links | `src/components/Contact/Contact.tsx` |
+| Site URL and description (metadata, share images) | `src/utils/site.ts` |
+| CV | `public/Mariia_Ganza_CV.pdf` |
+
+### Case studies
+
+A case study is a folder in `src/content/cases`:
+
+- `meta.ts`: title, summary, status, stack, table of contents, demo and repository links (typed by `CaseStudyMeta` in `types.ts`)
+- `Body.tsx`: the sections, built from the components in `src/components/CaseStudy`. Each section's `id` must match an entry in `meta.toc`
+- `data.ts` and images: the content the sections render
+
+To publish one, add it to the registry in `src/content/cases/index.ts`. Its key becomes the URL slug. The page, its Open Graph image and its sitemap entry follow from the registry. To link a project card to it, set `caseSlug` on the card in `Projects.tsx`. Only registered slugs type-check, so a card can't point at a case that doesn't exist. A card without a case study can set `repositoryUrl` instead.
+
+Published so far:
+
+- [`language-learning-platform`](src/content/cases/languageLearningPlatform): how a private vocabulary app evolved from Node.js and MongoDB to FastAPI, PostgreSQL and React
+
+## Error reporting
+
+Errors are reported to [Sentry](https://sentry.io) when a DSN is set. Without one (local development, tests) the SDK isn't started.
+
+- Uncaught errors, the route error screens and the section error boundaries report to Sentry
+- 10% of visits are sampled for performance tracing. There is no session replay
+- No IP addresses, user info, cookie values or request bodies are collected
+- Events are sent through the site's own `/monitoring` route, so ad blockers don't drop them
+- Source maps are uploaded at build time, only when `SENTRY_AUTH_TOKEN` is set
 
 | Variable | Exposed to the browser | Purpose |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SENTRY_DSN` | Yes | Sentry DSN for client, and fallback for server/edge |
-| `SENTRY_DSN` | No | Optional server/edge DSN override |
-| `SENTRY_ORG` | No | Sentry organization slug for source map uploads |
-| `SENTRY_PROJECT` | No | Sentry project slug for source map uploads |
-| `SENTRY_AUTH_TOKEN` | No | Auth token for uploading source maps |
+| `NEXT_PUBLIC_SENTRY_DSN` | Yes | Turns reporting on, in the browser and, as a fallback, on the server |
+| `SENTRY_DSN` | No | Optional separate DSN for the server and edge runtimes |
+| `SENTRY_ORG`, `SENTRY_PROJECT` | No | Build only. Where the source maps go |
+| `SENTRY_AUTH_TOKEN` | No | Build only, secret. Uploads the source maps |
 
-`NEXT_PUBLIC_` is required for the client bundle (`instrumentation-client.ts`). Values without that prefix stay on the server. Restart `yarn dev` after changing env files.
+`.env.example` lists them with placeholder values. Put real ones in `.env.local` (gitignored) locally, and in the project's environment settings on Vercel. Restart `yarn dev` after changing them.
 
-On Vercel (or similar), add the same keys in the project’s environment settings.
+## Scripts
 
-## Available Scripts
+| Script | Description |
+| --- | --- |
+| `yarn dev` | Start the dev server |
+| `yarn build` | Production build |
+| `yarn start` | Serve the production build |
+| `yarn lint` | Run ESLint |
+| `yarn type-check` | Run TypeScript checks (`tsc --noEmit`) |
+| `yarn test:visual` | Build the site and compare it with the baseline screenshots |
+| `yarn test:visual:update` | Accept the current rendering as the new baseline |
 
-- `yarn dev` - Start development server
-- `yarn build` - Build for production
-- `yarn start` - Start production server
-- `yarn lint` - Run ESLint
-- `yarn type-check` - Run the TypeScript compiler without emitting
-- `yarn test:visual` - Build the site and compare it against the committed screenshots in `tests/` (uses your installed Chrome)
-- `yarn test:visual:update` - Accept the current rendering as the new screenshot baseline
+## Testing
 
-Run `yarn test:visual` before and after dependency upgrades or styling refactors. Screenshots are Linux + Chrome specific; on another OS, record your own baseline first with `yarn test:visual:update`.
+The visual tests screenshot the home page, the case study and the 404 page on a desktop viewport (1440 × 900) and on a mobile one (Pixel 7), plus the open mobile menu, and compare them with the baseline in `tests/visual.spec.ts-snapshots`.
 
-## Credits
+- They run against a production build on port 3100, started by Playwright
+- They use the installed Chrome, so no Playwright browser download is needed
+- Reduced motion is on, so the random effects don't make the screenshots differ
+- Sentry is turned off for test runs
 
-- Design inspired by noir detective themes
-- Built with modern web technologies
-- Fonts from Google Fonts
+I run them before and after dependency upgrades and styling refactors. The baseline images are specific to Linux and Chrome. On another OS, record your own baseline first with `yarn test:visual:update`.
+
+There are no unit tests. The site has almost no logic of its own, so lint, type checks and the visual tests cover it.
+
+## Deployment
+
+The site is deployed on Vercel. Every page is static, and the Sentry route and source map upload work through the Next.js build, so Vercel needs no extra configuration beyond the Sentry variables. `next.config.ts` adds `X-Frame-Options`, `X-Content-Type-Options` and `Referrer-Policy` headers to every response.
+
+## Limitations
+
+- No CI. Lint, type checks and the visual tests are run by hand
+- The visual baseline only matches on Linux with Chrome
+- Content is written in the components and case study files; there is no CMS
+- One case study so far

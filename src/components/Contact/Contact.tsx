@@ -52,7 +52,7 @@ const Contact = () => {
               GitHub
             </a>
             <a
-              href="/cv.pdf"
+              href="/Mariia_Ganza_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.button}

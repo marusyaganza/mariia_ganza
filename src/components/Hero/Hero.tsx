@@ -47,7 +47,7 @@ const Hero = () => {
                 View case studies
               </button>
               <a
-                href="/cv.pdf"
+                href="/Mariia_Ganza_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.cvLink}

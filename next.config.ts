@@ -5,6 +5,17 @@ const nextConfig: NextConfig = {
   // Don't let `next dev` generate AGENTS.md in the repo root
   agentRules: false,
 
+  // Keep links to the old CV filename working
+  async redirects() {
+    return [
+      {
+        source: "/cv.pdf",
+        destination: "/Mariia_Ganza_CV.pdf",
+        permanent: true,
+      },
+    ];
+  },
+
   // Security headers
   async headers() {
     return [

@@ -309,7 +309,7 @@ export const evidenceLinks = [
     external: true,
   },
   { href: "#architecture", label: "Architecture Diagram →" },
-  { href: "/cv.pdf", label: "Download CV →", external: true },
+  { href: "/Mariia_Ganza_CV.pdf", label: "Download CV →", external: true },
   {
     href: "https://www.linkedin.com/in/mariia-ganza",
     label: "LinkedIn →",
