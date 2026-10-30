@@ -1,6 +1,6 @@
 # Error Boundaries
 
-This directory contains error boundary components designed to match the "Digital Detective" theme of the portfolio.
+This directory contains error boundary components designed to match the noir theme of the portfolio.
 
 ## Components
 

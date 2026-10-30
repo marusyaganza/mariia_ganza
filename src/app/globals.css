@@ -1,19 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@300;400;500;600&family=Fira+Mono:wght@400;500&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --bg-color: #21161a;
+  --bg-raised: #2a1d22;
   --text-color: #d7c7b7;
+  --text-dim: rgba(215, 199, 183, 0.65);
   --green-light: #038c33;
   --green-dark: #01401c;
   --blue: #8fbdc6;
   --yellow: #ffe81f;
   --pink: #e5576a;
-  --font-heading: "Courier Prime", monospace;
-  --font-body: "Inter", sans-serif;
-  --font-accent: "Fira Mono", monospace;
+  --border-color: rgba(215, 199, 183, 0.15);
+  /* --font-heading, --font-body, --font-accent come from next/font (layout.tsx) */
   --shadow-noir: 0 20px 40px rgba(0, 0, 0, 0.7);
   --glow-green: 0 0 20px rgba(3, 140, 51, 0.3);
 }
@@ -24,12 +24,20 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 body {
   font-family: var(--font-body);
   background: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
   overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
   position: relative;
 }
 
@@ -41,7 +49,8 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 20% 80%,
       rgba(255, 232, 31, 0.03) 0%,
       transparent 50%
@@ -77,6 +86,28 @@ body::before {
   }
   50% {
     opacity: 0.3;
+  }
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Respect the OS "reduce motion" setting: animations jump to their end state */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -156,7 +187,9 @@ body::before {
   border-color: var(--green-light);
   background: rgba(3, 140, 51, 0.1);
   transform: translateY(-2px);
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3), 0 10px 25px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    inset 0 0 20px rgba(0, 0, 0, 0.3),
+    0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 .project-card {

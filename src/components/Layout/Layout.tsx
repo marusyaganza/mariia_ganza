@@ -1,25 +1,19 @@
-"use client";
-
-import { useVisualEffectsManager } from "@/hooks/useVisualEffectsService";
-import { VisualEffectsLayout } from "./VisualEffectsLayout";
 import { SectionErrorBoundary } from "@/components/ErrorBoundary";
+import { VisualEffects } from "./VisualEffects";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-const LayoutContent = ({ children }: LayoutProps) => {
-  // Initialize effects manager using the new service-based approach
-  useVisualEffectsManager();
-
-  return <VisualEffectsLayout>{children}</VisualEffectsLayout>;
-};
-
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <SectionErrorBoundary sectionName="Visual Effects">
-      <LayoutContent>{children}</LayoutContent>
-    </SectionErrorBoundary>
+    <>
+      {/* If the decorative layer fails, drop it silently and keep the page */}
+      <SectionErrorBoundary sectionName="Visual Effects" fallback={null}>
+        <VisualEffects />
+      </SectionErrorBoundary>
+      {children}
+    </>
   );
 };
 

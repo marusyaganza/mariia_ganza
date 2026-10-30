@@ -21,7 +21,7 @@
 
 .experienceTimeline {
   position: relative;
-  max-width: 800px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
@@ -72,7 +72,9 @@
   background: var(--green-light);
   border-radius: 50%;
   border: 4px solid var(--bg-color);
-  box-shadow: 0 0 0 4px var(--green-light), 0 0 20px rgba(3, 140, 51, 0.4);
+  box-shadow:
+    0 0 0 4px var(--green-light),
+    0 0 20px rgba(3, 140, 51, 0.4);
   z-index: 10;
 }
 
@@ -93,7 +95,9 @@
 .timelineContent:hover {
   transform: translateY(-5px);
   border-color: var(--green-light);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(3, 140, 51, 0.3);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(3, 140, 51, 0.3);
 }
 
 .timelineContent::before {
@@ -106,46 +110,11 @@
   background: linear-gradient(90deg, var(--green-light), var(--blue));
 }
 
-.jobBadge {
-  font-family: var(--font-accent);
-  font-size: 0.8rem;
-  color: var(--yellow);
-  background: rgba(255, 232, 31, 0.1);
-  padding: 5px 12px;
-  border: 1px solid var(--yellow);
-  display: inline-block;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
-  text-shadow: 0 0 5px rgba(255, 232, 31, 0.3);
-}
-
-.techBadge {
-  font-family: var(--font-accent);
-  font-size: 0.75rem;
-  padding: 6px 10px;
-  background: rgba(143, 189, 198, 0.15);
-  color: var(--blue);
-  border: 1px solid rgba(143, 189, 198, 0.3);
-  transition: all 0.3s ease;
-}
-
-.techBadge:hover {
-  background: rgba(143, 189, 198, 0.25);
-  box-shadow: 0 0 8px rgba(143, 189, 198, 0.2);
-}
-
-.fadeIn {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.fadeIn.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 @media (max-width: 768px) {
+  .experienceTimeline {
+    padding-left: 40px;
+  }
+
   .timelineItem:nth-child(odd) .timelineContent,
   .timelineItem:nth-child(even) .timelineContent {
     margin: 0;
@@ -155,16 +124,28 @@
   }
 
   .timelineMarker {
-    left: -12px;
+    left: -36px;
+    top: 46px;
     transform: none;
   }
 
   .timelineContent {
-    margin-right: 20px;
+    margin-right: 0;
   }
 
   .experienceTimeline::before {
-    left: -5px;
+    left: 13px;
     transform: none;
   }
+}
+
+.recordNumber {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-family: var(--font-accent);
+  font-size: 0.7rem;
+  color: var(--yellow);
+  letter-spacing: 1px;
+  opacity: 0.6;
 }

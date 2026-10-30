@@ -1,18 +1,22 @@
-import { withSentryConfig } from "@sentry/nextjs";
+import { withSentryConfig } from "@sentry/nextjs/config";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Performance optimizations
-  compress: true,
+  // Don't let `next dev` generate AGENTS.md in the repo root
+  agentRules: false,
 
-  // Image optimization
-  images: {
-    formats: ["image/webp", "image/avif"],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  // Keep links to the old CV filename working
+  async redirects() {
+    return [
+      {
+        source: "/cv.pdf",
+        destination: "/Mariia_Ganza_CV.pdf",
+        permanent: true,
+      },
+    ];
   },
 
-  // Headers for better caching and security
+  // Security headers
   async headers() {
     return [
       {
@@ -32,25 +36,16 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        source: "/public/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
     ];
   },
 };
 
 export default withSentryConfig(nextConfig, {
-  org: "language-power",
-  project: "javascript-nextjs",
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
   silent: !process.env.CI,
   widenClientFileUpload: true,
+  // Proxy browser events through the site to avoid ad blockers
   tunnelRoute: "/monitoring",
-  disableLogger: true,
-  automaticVercelMonitors: true,
 });

@@ -29,11 +29,11 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
 }
 
-.contactContent::before {
-  content: "FINAL CHAPTER";
+.subheading {
   position: absolute;
   top: 15px;
   left: 50%;
+  width: 100%;
   transform: translateX(-50%);
   font-family: var(--font-accent);
   font-size: 0.8rem;
@@ -41,51 +41,44 @@
   letter-spacing: 2px;
 }
 
-.contactButton {
-  display: inline-block;
-  background: linear-gradient(45deg, var(--green-dark), var(--green-light));
-  color: var(--text-color);
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .subheading {
+    position: static;
+    transform: none;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.button {
+  color: var(--green-light);
   text-decoration: none;
   font-family: var(--font-accent);
-  font-weight: 500;
-  border-radius: 0;
-  transition: all 0.4s ease;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+  letter-spacing: 1px;
   position: relative;
-  overflow: hidden;
 }
 
-.contactButton::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: radial-gradient(circle, var(--yellow), transparent);
-  transition: all 0.4s ease;
-  transform: translate(-50%, -50%);
+.button:hover {
+  color: var(--yellow);
+  text-shadow: 0 0 8px rgba(255, 232, 31, 0.4);
 }
 
-.contactButton:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-.contactButton:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(3, 140, 51, 0.4);
-}
-
-.fadeIn {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.fadeIn.visible {
-  opacity: 1;
-  transform: translateY(0);
+.button:hover::after {
+  transform: translateX(5px);
 }

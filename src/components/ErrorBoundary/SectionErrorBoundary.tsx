@@ -64,7 +64,7 @@ const SectionErrorBoundary: React.FC<SectionErrorBoundaryProps> = ({
 
   return (
     <ErrorBoundary
-      fallback={fallback || defaultFallback}
+      fallback={fallback === undefined ? defaultFallback : fallback}
       onError={onError}
       sentryContext={sectionSentryContext}
       enableSentry={enableSentry}

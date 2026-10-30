@@ -3,17 +3,15 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs";
+import { sentryBaseOptions } from "@/utils/sentryOptions";
 
-Sentry.init({
-  dsn: "https://cda3672a5361f0093abf979c3cc0cd39@o383682.ingest.us.sentry.io/4509977842221056",
+const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN;
 
-  // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
-  tracesSampleRate: 1,
-  // Enable logs to be sent to Sentry
-  enableLogs: true,
-
-  // Setting this option to true will print useful information to the console while you're setting up Sentry.
-  debug: false,
-});
+if (dsn) {
+  Sentry.init({
+    dsn,
+    ...sentryBaseOptions,
+  });
+}
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;

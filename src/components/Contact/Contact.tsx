@@ -1,64 +1,66 @@
-"use client";
-
-import { useEffect, useRef, useCallback } from "react";
-import { useAudio } from "../../hooks/useAudio";
+import Reveal from "@/components/Reveal/Reveal";
 import styles from "./Contact.module.css";
 
 const Contact = () => {
-  const contactRef = useRef<HTMLDivElement>(null);
-  const { play: playEnter } = useAudio("/sound/enter.wav", {
-    volume: 0.4,
-  });
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-
-    if (contactRef.current) observer.observe(contactRef.current);
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handlePlayEnter = useCallback(() => {
-    playEnter();
-  }, [playEnter]);
-
   return (
     <section id="contact" className={`${styles.section} py-32`}>
-      <div className="max-w-6xl mx-auto px-5 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <header>
           <h2 className="font-heading font-bold text-5xl mb-16 text-center relative drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)]">
             Close the Case
           </h2>
         </header>
-        <div
-          ref={contactRef}
-          className={`${styles.contactContent} ${styles.fadeIn} text-center max-w-3xl mx-auto relative p-12`}
+        <Reveal
+          className={`${styles.contactContent} text-center max-w-3xl mx-auto relative p-12 max-md:p-6`}
         >
-          <blockquote className="text-xl mb-12 opacity-90 italic">
-            &ldquo;Every great detective knows that the best cases come from
-            unexpected places. Got a digital mystery that needs solving?
-            Let&apos;s crack it together.&rdquo;
+          <span className={styles.subheading}>
+            A CLEAR PROBLEM STATEMENT IS A GOOD PLACE TO START
+          </span>
+          <blockquote className="text-xl mb-12 opacity-90 italic space-y-3 text-balance">
+            <p>
+              <strong>
+                Open to remote Python backend and backend-leaning fullstack
+                roles.
+              </strong>
+            </p>
+            <p>
+              Strong React/TypeScript background, with a particular interest in
+              cross-layer debugging and application behavior.
+            </p>
           </blockquote>
-          <a
-            href="/cv.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles.contactButton} py-6 px-12`}
-            onClick={handlePlayEnter}
-            aria-label="Download CV to start investigation"
-          >
-            Start Investigation
-          </a>
-        </div>
+          <div className={styles.buttons}>
+            <a
+              href="mailto:mariia_ganza@protonmail.com"
+              className={styles.button}
+            >
+              Email me
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mariia-ganza"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.button}
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/marusyaganza"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.button}
+            >
+              GitHub
+            </a>
+            <a
+              href="/Mariia_Ganza_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.button}
+            >
+              Download CV · PDF
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

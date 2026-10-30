@@ -1,9 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Courier_Prime, Fira_Mono } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { SentryErrorContext } from "@/utils/sentryErrorHandler";
+import { SITE_DESCRIPTION, SITE_URL } from "@/utils/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,28 +24,29 @@ const firaMono = Fira_Mono({
   display: "swap",
 });
 
+const TITLE = "Mariia Ganza | Backend-leaning Fullstack Engineer";
+
 export const metadata: Metadata = {
   title: {
-    default: "Mariia Ganza - Digital Detective | Full-Stack Developer",
-    template: "%s | Mariia Ganza - Digital Detective",
+    default: TITLE,
+    template: "%s | Mariia Ganza",
   },
-  description:
-    "Senior Full-Stack Developer specializing in React, TypeScript, Node.js, and modern web technologies. Solving complex digital mysteries through clean code and innovative solutions. Available for new investigations.",
+  description: SITE_DESCRIPTION,
   keywords: [
-    "Full-Stack Developer",
-    "React Developer",
-    "TypeScript",
-    "Node.js",
-    "JavaScript",
-    "Web Development",
-    "Frontend Developer",
+    "Backend-leaning Fullstack Engineer",
+    "Fullstack Engineer",
     "Backend Developer",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "SQLAlchemy",
+    "Redis",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "API Design",
     "Portfolio",
-    "Digital Detective",
-    "Software Engineer",
-    "Docker",
-    "MongoDB",
-    "Storybook",
   ],
   authors: [{ name: "Mariia Ganza" }],
   creator: "Mariia Ganza",
@@ -56,33 +56,31 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://mariia-ganza.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
+  },
+  manifest: "/manifest.json",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://mariia-ganza.vercel.app",
-    title: "Mariia Ganza - Digital Detective | Full-Stack Developer",
-    description:
-      "Senior Full-Stack Developer specializing in React, TypeScript, Node.js, and modern web technologies. Solving complex digital mysteries through clean code and innovative solutions.",
+    url: SITE_URL,
+    title: TITLE,
+    description: SITE_DESCRIPTION,
     siteName: "Mariia Ganza Portfolio",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Mariia Ganza - Digital Detective Portfolio",
-      },
-    ],
+    // The image comes from app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mariia Ganza - Digital Detective | Full-Stack Developer",
-    description:
-      "Senior Full-Stack Developer specializing in React, TypeScript, Node.js, and modern web technologies. Solving complex digital mysteries through clean code.",
-    images: ["/og-image.jpg"],
+    title: TITLE,
+    description: SITE_DESCRIPTION,
   },
   robots: {
     index: true,
@@ -96,9 +94,16 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google:
-      "google-site-verification=QguZiXQhmOKQgfiad4QICmhEx8FYsiwQl2KeNeSE8-Q",
+    // Meta-tag verification takes the bare token; the "google-site-verification="
+    // prefix is only used for DNS TXT records
+    google: "QguZiXQhmOKQgfiad4QICmhEx8FYsiwQl2KeNeSE8-Q",
   },
+};
+
+// Next.js adds width=device-width, initial-scale=1 automatically
+export const viewport: Viewport = {
+  themeColor: "#21161a",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -106,28 +111,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const rootSentryContext: SentryErrorContext = {
-    sectionName: "Root",
-    componentName: "RootLayout",
-  };
-
   return (
-    <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#0a0a0a" />
-        <meta name="color-scheme" content="dark" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-      </head>
-      <body
-        className={`${inter.variable} ${courierPrime.variable} ${firaMono.variable} ${inter.className}`}
-      >
-        <ErrorBoundary sentryContext={rootSentryContext}>
-          <StructuredData />
-          {children}
-        </ErrorBoundary>
+    <html
+      lang="en"
+      className={`${inter.variable} ${courierPrime.variable} ${firaMono.variable}`}
+    >
+      <body>
+        <StructuredData />
+        {children}
       </body>
     </html>
   );

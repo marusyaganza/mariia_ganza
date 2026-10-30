@@ -3,7 +3,7 @@ import styles from "./Footer.module.css";
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <div className="max-w-6xl mx-auto px-5 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <nav
           className="flex justify-center gap-8 mb-8"
           aria-label="Social media links"

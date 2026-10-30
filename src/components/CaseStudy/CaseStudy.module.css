@@ -1,0 +1,558 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.backLink {
+  font-family: var(--font-accent);
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover {
+  color: var(--green-light);
+}
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 56px 32px 100px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 0 72px;
+  align-items: start;
+  position: relative;
+  z-index: 10;
+  line-height: 1.7;
+}
+
+.headerArea,
+.content {
+  grid-column: 1;
+  min-width: 0;
+}
+
+.block {
+  padding-top: 48px;
+  margin-top: 48px;
+  border-top: 1px solid var(--border-color);
+  scroll-margin-top: 90px;
+}
+
+.block:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.block p {
+  margin-bottom: 16px;
+  max-width: 720px;
+}
+
+.block p:last-child {
+  margin-bottom: 0;
+}
+
+.blockLabel {
+  font-family: var(--font-accent);
+  font-size: 0.75rem;
+  color: var(--pink);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.kicker {
+  margin-top: 28px;
+  font-family: var(--font-accent);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.noteBox {
+  background: var(--bg-raised);
+  border-left: 3px solid var(--green-light);
+  padding: 18px 22px;
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  max-width: 720px;
+  margin: 20px 0;
+}
+
+.schemaTree {
+  background: var(--bg-raised);
+  border: 1px solid var(--border-color);
+  padding: 18px 22px;
+  margin-top: 8px;
+  max-width: 720px;
+  overflow-x: auto;
+  font-family: var(--font-accent);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+.snapshotTable {
+  width: 100%;
+  max-width: 760px;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.snapshotTable tr {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.snapshotTable tr:last-child {
+  border-bottom: none;
+}
+
+.snapshotTable th,
+.snapshotTable td {
+  text-align: left;
+  padding: 12px 16px 12px 0;
+  vertical-align: top;
+  font-size: 0.95rem;
+}
+
+.snapshotTable th {
+  font-family: var(--font-accent);
+  color: var(--text-dim);
+  font-weight: 500;
+  width: 160px;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.dashList,
+.arrowList {
+  list-style: none;
+  max-width: 720px;
+  margin-top: 8px;
+}
+
+.dashList li,
+.arrowList li {
+  padding: 10px 0 10px 24px;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  font-size: 0.98rem;
+}
+
+.dashList li:last-child,
+.arrowList li:last-child {
+  border-bottom: none;
+}
+
+.dashList li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--pink);
+}
+
+.arrowList li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+}
+
+.arrowListBlue li::before {
+  color: var(--blue);
+}
+
+.arrowListGreen li::before {
+  color: var(--green-light);
+}
+
+.diagramWrap {
+  background: var(--bg-raised);
+  border: 1px solid var(--border-color);
+  padding: 32px;
+  max-width: 760px;
+}
+
+.diagramFrame {
+  display: block;
+  border: 1px solid var(--border-color);
+}
+
+.diagramCaption {
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-top: 14px;
+}
+
+.decisionCard {
+  max-width: 760px;
+  border: 1px solid var(--border-color);
+  padding: 26px 28px;
+  margin-bottom: 22px;
+  background: var(--bg-raised);
+}
+
+.decisionCard:last-child {
+  margin-bottom: 0;
+}
+
+.principleGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 760px;
+}
+
+.principleCard {
+  border: 1px solid var(--border-color);
+  padding: 22px 24px;
+  background: var(--bg-raised);
+}
+
+.timeline {
+  list-style: none;
+  max-width: 760px;
+  margin-top: 8px;
+}
+
+.timelineEntry {
+  position: relative;
+  margin-left: 6px;
+  padding: 0 0 40px 32px;
+  border-left: 1px solid var(--border-color);
+}
+
+.timelineEntry:last-child {
+  padding-bottom: 0;
+  border-left-color: transparent;
+}
+
+.timelineEntry::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 2px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--bg-color);
+  border: 2px solid var(--blue);
+}
+
+.timelineCurrent::before {
+  background: var(--green-light);
+  border-color: var(--green-light);
+}
+
+/* Dashed dot and line: a side branch that was not carried forward */
+.timelineAbandoned {
+  border-left-style: dashed;
+}
+
+.timelineAbandoned::before {
+  border-style: dashed;
+  border-color: var(--text-dim);
+}
+
+.timelineStatus {
+  border: 1px solid var(--border-color);
+  padding: 2px 8px;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+.timelineCurrent .timelineStatus {
+  color: var(--green-light);
+  border-color: var(--green-light);
+}
+
+.timelineTransition {
+  margin-top: 20px;
+  background: var(--bg-raised);
+  border-left: 3px solid var(--yellow);
+  padding: 14px 18px;
+}
+
+.screenStory {
+  list-style: none;
+  max-width: 760px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.screenStep {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.screenShot {
+  display: block;
+  border: 1px solid var(--border-color);
+}
+
+.zoomTrigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.zoomTrigger:focus-visible {
+  outline: 2px solid var(--green-light);
+  outline-offset: 3px;
+}
+
+.lightbox {
+  margin: auto;
+  max-width: 95vw;
+  max-height: 95vh;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  background: var(--bg-raised);
+  overflow: visible;
+}
+
+.lightbox::backdrop {
+  background: rgba(33, 22, 26, 0.88);
+}
+
+/* Keep the page from scrolling behind an open lightbox */
+html:has(.lightbox[open]) {
+  overflow: hidden;
+}
+
+.lightboxImage {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 95vw;
+  max-height: 90vh;
+}
+
+.lightboxClose {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--text-color);
+  background: none;
+  cursor: pointer;
+}
+
+.lightboxClose:focus-visible {
+  outline: 2px solid var(--green-light);
+}
+
+.decisionRow {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.decisionRow:last-child {
+  margin-bottom: 0;
+}
+
+.decisionKey {
+  font-family: var(--font-accent);
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-top: 2px;
+}
+
+/* Test names in the verification list, linking to the source */
+.testLink {
+  font-family: var(--font-accent);
+  font-size: 0.78rem;
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-color: rgba(143, 189, 198, 0.35);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.inlineLink {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-color: rgba(143, 189, 198, 0.35);
+  text-underline-offset: 3px;
+}
+
+.testLink:hover,
+.inlineLink:hover {
+  text-decoration-color: var(--blue);
+}
+
+.linkChip {
+  font-family: var(--font-accent);
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 10px 18px;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.linkChip:hover {
+  border-color: var(--green-light);
+  color: var(--green-light);
+}
+
+.sideRail {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.railTitle {
+  font-family: var(--font-accent);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.railMetaRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.9rem;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.railMetaRow:last-child {
+  border-bottom: none;
+}
+
+.stackTag {
+  font-family: var(--font-accent);
+  font-size: 0.75rem;
+  color: var(--blue);
+  border: 1px solid rgba(143, 189, 198, 0.3);
+  padding: 5px 10px;
+}
+
+.tocLink {
+  display: block;
+  font-family: var(--font-accent);
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--text-dim);
+  padding: 7px 0;
+  border-left: 2px solid transparent;
+  padding-left: 12px;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.tocLink:hover,
+.tocLinkActive {
+  color: var(--green-light);
+  border-left-color: var(--green-light);
+}
+
+.railCta {
+  display: block;
+  text-align: center;
+  font-family: var(--font-accent);
+  font-size: 0.85rem;
+  color: var(--bg-color);
+  background: var(--green-light);
+  padding: 12px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.railCtaSecondary {
+  composes: railCta;
+  color: var(--green-light);
+  background: transparent;
+  border: 1px solid var(--green-light);
+}
+
+.caseFooter {
+  border-top: 1px solid var(--border-color);
+  padding: 36px 32px;
+  text-align: center;
+  font-family: var(--font-accent);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* Title and summary first, then case details, then the sections */
+  .content {
+    order: 2;
+  }
+
+  .sideRail {
+    grid-column: 1;
+    grid-row: auto;
+    order: 1;
+    position: static;
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    background: var(--bg-raised);
+  }
+
+  .toc {
+    display: none;
+  }
+
+  .decisionRow {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .principleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .screenStep {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

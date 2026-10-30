@@ -5,19 +5,19 @@ export default function Loading() {
 
       <div className="text-center z-20 relative">
         <div className="mb-8">
-          <span className="font-[var(--font-accent)] text-sm text-[var(--green-light)] tracking-widest">
+          <span className="font-accent text-sm text-[var(--green-light)] tracking-widest">
             CASE FILE: LOADING-001
           </span>
         </div>
 
         <div className="space-y-6">
-          <h1 className="font-[var(--font-heading)] text-4xl text-[var(--text-color)] mb-4">
+          <h1 className="font-heading text-4xl text-[var(--text-color)] mb-4">
             Investigating...
           </h1>
 
-          <p className="font-[var(--font-body)] text-lg text-[var(--text-color)] opacity-80 max-w-md mx-auto">
-            &quot;The digital detective is gathering evidence. Please stand by
-            while the case files are being assembled.&quot;
+          <p className="font-body text-lg text-[var(--text-color)] opacity-80 max-w-md mx-auto">
+            &quot;Gathering the evidence. Please stand by while the case files
+            are being assembled.&quot;
           </p>
 
           <div className="flex justify-center mt-8">
@@ -34,7 +34,7 @@ export default function Loading() {
           </div>
         </div>
 
-        <div className="mt-12 text-xs text-[var(--text-color)] opacity-50 font-[var(--font-accent)]">
+        <div className="mt-12 text-xs text-[var(--text-color)] opacity-50 font-accent">
           Loading evidence... Please wait
         </div>
       </div>
