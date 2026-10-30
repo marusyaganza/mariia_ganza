@@ -20,7 +20,7 @@ const ScreenStory = ({ steps }: ScreenStoryProps) => {
       {steps.map((step, index) => (
         <li key={step.title} className={styles.screenStep}>
           <div>
-            <span className="mb-2 block font-accent text-[0.8rem] tracking-[1px] text-green-light">
+            <span className="mb-2 block font-accent text-[0.8rem] tracking-[1px] text-green-text">
               STEP {String(index + 1).padStart(2, "0")}
             </span>
             <h3 className="mb-2.5 font-heading text-[1.05rem]">{step.title}</h3>

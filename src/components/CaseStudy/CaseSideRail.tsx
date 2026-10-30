@@ -25,7 +25,7 @@ const CaseSideRail = ({ meta }: CaseSideRailProps) => {
           <span className="font-accent text-[0.78rem] text-text-dim">
             Status
           </span>
-          <span className="text-right text-green-light">
+          <span className="text-right text-green-text">
             {meta.details.status}
           </span>
         </div>

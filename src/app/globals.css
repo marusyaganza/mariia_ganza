@@ -9,6 +9,8 @@
   --text-dim: rgba(215, 199, 183, 0.65);
   --green-light: #038c33;
   --green-dark: #01401c;
+  /* Same hue as --green-light, light enough for small text (4.7:1 on --bg-raised) */
+  --green-text: #03a03a;
   --blue: #8fbdc6;
   --yellow: #ffe81f;
   --pink: #e5576a;

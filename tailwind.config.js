@@ -12,6 +12,7 @@ module.exports = {
         "text-dim": "var(--text-dim)",
         "green-light": "var(--green-light)",
         "green-dark": "var(--green-dark)",
+        "green-text": "var(--green-text)",
         blue: "var(--blue)",
         yellow: "var(--yellow)",
         pink: "var(--pink)",

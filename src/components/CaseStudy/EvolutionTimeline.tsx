@@ -37,7 +37,7 @@ const EvolutionTimeline = ({ entries }: EvolutionTimelineProps) => {
               className={
                 entry.stage === "abandoned"
                   ? "text-text-dim"
-                  : "text-green-light"
+                  : "text-green-text"
               }
             >
               {entry.version.toUpperCase()}

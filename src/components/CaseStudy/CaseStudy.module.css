@@ -16,7 +16,7 @@
 }
 
 .backLink:hover {
-  color: var(--green-light);
+  color: var(--green-text);
 }
 
 .page {
@@ -174,7 +174,7 @@
 }
 
 .arrowListGreen li::before {
-  color: var(--green-light);
+  color: var(--green-text);
 }
 
 .diagramWrap {
@@ -275,7 +275,7 @@
 }
 
 .timelineCurrent .timelineStatus {
-  color: var(--green-light);
+  color: var(--green-text);
   border-color: var(--green-light);
 }
 
@@ -422,7 +422,7 @@ html:has(.lightbox[open]) {
 
 .linkChip:hover {
   border-color: var(--green-light);
-  color: var(--green-light);
+  color: var(--green-text);
 }
 
 .sideRail {
@@ -483,7 +483,7 @@ html:has(.lightbox[open]) {
 
 .tocLink:hover,
 .tocLinkActive {
-  color: var(--green-light);
+  color: var(--green-text);
   border-left-color: var(--green-light);
 }
 
@@ -493,7 +493,7 @@ html:has(.lightbox[open]) {
   font-family: var(--font-accent);
   font-size: 0.85rem;
   color: var(--bg-color);
-  background: var(--green-light);
+  background: var(--green-text);
   padding: 12px;
   text-decoration: none;
   letter-spacing: 0.5px;
@@ -501,7 +501,7 @@ html:has(.lightbox[open]) {
 
 .railCtaSecondary {
   composes: railCta;
-  color: var(--green-light);
+  color: var(--green-text);
   background: transparent;
   border: 1px solid var(--green-light);
 }

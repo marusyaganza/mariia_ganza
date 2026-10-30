@@ -7,7 +7,7 @@ interface CaseTopBarProps {
 
 const CaseTopBar = ({ caseNumber }: CaseTopBarProps) => {
   return (
-    <div className={styles.topbar}>
+    <header className={styles.topbar}>
       <div className="mx-auto flex max-w-[1180px] items-center justify-between px-8 py-[18px]">
         <Link href="/" className={styles.backLink}>
           ← Back to portfolio
@@ -16,7 +16,7 @@ const CaseTopBar = ({ caseNumber }: CaseTopBarProps) => {
           {`CASE FILE — ${caseNumber}`}
         </span>
       </div>
-    </div>
+    </header>
   );
 };
 

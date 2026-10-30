@@ -15,7 +15,7 @@ const CaseHeader = ({ caseId, title, summary, status }: CaseHeaderProps) => {
         {title}
       </h1>
       <p className="max-w-[640px] text-[1.05rem] text-text-dim">{summary}</p>
-      <span className="mt-5 inline-block border border-green-light px-2.5 py-1 font-accent text-[0.75rem] tracking-[1px] text-green-light">
+      <span className="mt-5 inline-block border border-green-light px-2.5 py-1 font-accent text-[0.75rem] tracking-[1px] text-green-text">
         {status}
       </span>
     </header>

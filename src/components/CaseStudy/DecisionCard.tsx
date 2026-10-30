@@ -20,7 +20,7 @@ interface DecisionCardProps {
 const DecisionCard = ({ number, title, rows, link }: DecisionCardProps) => {
   return (
     <article className={styles.decisionCard}>
-      <span className="mb-2 block font-accent text-[0.8rem] tracking-[1px] text-green-light">
+      <span className="mb-2 block font-accent text-[0.8rem] tracking-[1px] text-green-text">
         {number}
       </span>
       <h3 className="mb-3.5 font-heading text-[1.15rem]">{title}</h3>
