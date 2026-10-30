@@ -16,10 +16,17 @@ const Contact = () => {
           <span className={styles.subheading}>
             A CLEAR PROBLEM STATEMENT IS A GOOD PLACE TO START
           </span>
-          <blockquote className="text-xl mb-12 opacity-90 italic">
-            Open to remote backend-leaning fullstack roles and clearly scoped
-            technical contract work. Available for scheduled collaboration
-            across US and European time zones.
+          <blockquote className="text-xl mb-12 opacity-90 italic space-y-3 text-balance">
+            <p>
+              <strong>
+                Open to remote Python backend and backend-leaning fullstack
+                roles.
+              </strong>
+            </p>
+            <p>
+              Strong React/TypeScript background, with a particular interest in
+              cross-layer debugging and application behavior.
+            </p>
           </blockquote>
           <div className={styles.buttons}>
             <a
@@ -34,7 +41,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               className={styles.button}
             >
-              Linkedin
+              LinkedIn
             </a>
             <a
               href="https://github.com/marusyaganza"
@@ -42,7 +49,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               className={styles.button}
             >
-              Github
+              GitHub
             </a>
             <a
               href="/cv.pdf"
@@ -50,7 +57,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               className={styles.button}
             >
-              Download CV
+              Download CV · PDF
             </a>
           </div>
         </Reveal>

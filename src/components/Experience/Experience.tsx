@@ -77,7 +77,7 @@ const Experience = () => {
                   </h3>
                   <p className="font-accent text-green-light text-lg mb-1 font-medium">
                     {item.company}{" "}
-                    <time className="font-accent text-pink text-sm mb-5 tracking-wider">
+                    <time className="font-accent text-pink text-sm mb-5 tracking-wider whitespace-nowrap">
                       {item.period}
                     </time>
                   </p>

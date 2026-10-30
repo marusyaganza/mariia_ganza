@@ -10,30 +10,23 @@ const skillsData = [
       "SQLAlchemy",
       "PostgreSQL",
       "Redis",
-      "SQL",
       "REST APIs",
-      "GraphQL",
-      "Node.js",
-      "Express.js",
-      "Apollo Server",
     ],
   },
   {
-    title: "FRONTEND",
+    title: "WEB APPLICATION EXPERIENCE",
     skills: [
       "TypeScript",
       "JavaScript",
       "React",
       "Next.js",
-      "Apollo Client",
-      "HTML",
-      "CSS",
-      "Storybook",
+      "Node.js",
+      "GraphQL",
     ],
   },
   {
-    title: "ENGINEERING PRACTICES",
-    skills: ["Docker", "GitHub", "Cypress", "Unit testing", "API design"],
+    title: "TESTING & DELIVERY",
+    skills: ["Automated testing", "Cypress", "Docker", "GitHub Actions"],
   },
 ];
 
@@ -51,35 +44,32 @@ const About = () => {
             className={`${styles.aboutText} text-lg leading-relaxed p-8 max-lg:p-6`}
           >
             <span className="text-pink font-accent text-sm uppercase tracking-wider mb-5 block">
-              WITNESS STATEMENT:
+              ENGINEERING BACKGROUND:
             </span>
             <p>
-              The name&apos;s{" "}
-              <span className="text-green-light font-heading">
-                Mariia Ganza{" "}
-              </span>
-              I work best on systems where the problem is not immediately
-              assigned to one layer. My background spans frontend development,
-              fullstack web applications, API design, automated testing, design
-              systems, and an earlier C/C++ foundation in microcontroller
-              programming. I enjoy tracing a user-visible failure through the
-              browser, API contract, database, cache, and deployment environment
-              until the root cause is clear
+              My programming foundation began with C/C++ microcontroller work
+              during engineering training. Reading device documentation, working
+              within limited memory, and separating software faults from wiring
+              or component problems taught me to investigate systems rather than
+              assume where a failure belongs.
             </p>
             <p>
-              For years, I have investigated everything from banking platforms
-              to enterprise design systems, making sure teams deliver reliable,
-              accessible, and easy-to-use interfaces. React and Node.js are my
-              trusted partners, and I leave no detail unchecked—whether building
-              reusable components or locking down quality with Cypress tests.
-              Collaboration isn’t just part of the process; it’s how I uncover
-              the best solutions. Agile teams, sprint rituals, mentoring new
-              devs, or running accessibility workshops — if it strengthens the
-              squad, I’m in.
+              I later moved into Java/JSP web development and professional
+              frontend roles. My work has included React/TypeScript
+              applications, reusable components, accessibility, and automated
+              testing, alongside independent fullstack projects.
             </p>
             <p>
-              I am currently extending that experience through Python, FastAPI,
-              PostgreSQL, SQLAlchemy, Redis, and deeper SQL/database study.
+              I especially enjoy bugs whose ownership is unclear at first. I
+              like following a user-visible problem through the browser, API,
+              and data layer, identifying the cause, and fixing it at the
+              appropriate boundary.
+            </p>
+            <p>
+              My current projects use Python, FastAPI, PostgreSQL, SQLAlchemy,
+              and Redis. I am looking for remote Python backend or
+              backend-leaning fullstack work where that frontend experience
+              remains useful.
             </p>
           </article>
           <article>

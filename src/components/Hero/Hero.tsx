@@ -34,24 +34,23 @@ const Hero = () => {
               Python · FastAPI · PostgreSQL · TypeScript · React
             </p>
             <p>
-              I build and investigate web applications across the UI, API,
-              database, and deployment boundary. My current focus is Python
-              backend development, data-intensive systems, and making complex
-              product behavior easier to reason about.
+              I build web applications and trace problems across the browser,
+              API, and database. My current focus is Python backend development,
+              building on professional React/TypeScript experience and
+              independent fullstack projects.
             </p>
             <section className={styles.buttons}>
               <button
                 onClick={() => handleScrollToSection("projects")}
                 className={styles.ctaButton}
               >
-                View Case Files
+                View case studies
               </button>
               <a
                 href="/cv.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.cvLink}
-                aria-label="Download CV to start investigation"
               >
                 Download CV
               </a>

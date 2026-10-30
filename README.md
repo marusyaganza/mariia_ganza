@@ -6,7 +6,13 @@ A modern, noir-themed portfolio website built with Next.js, TypeScript, and Tail
 
 🔗 **[View Live Site](https://mariia-ganza.vercel.app)** 
 
-![Portfolio Screenshot](docs/screenshot.png)
+![Home page: "I'm Mariia Ganza, Backend-leaning Fullstack Engineer" hero in the dark noir theme, with the case-file navigation](docs/screenshots/home-desktop.webp)
+
+![Case Files section: project cards for the Language Learning Platform and Stars Travel](docs/screenshots/case-files-desktop.webp)
+
+<p align="center">
+  <img src="docs/screenshots/mobile.webp" width="600" alt="Mobile layout: the home page next to the open Case Index menu" />
+</p>
 
 ## Tech Stack
 

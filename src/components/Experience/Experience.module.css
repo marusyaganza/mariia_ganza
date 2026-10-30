@@ -112,7 +112,7 @@
 
 @media (max-width: 768px) {
   .experienceTimeline {
-    padding-left: 24px;
+    padding-left: 40px;
   }
 
   .timelineItem:nth-child(odd) .timelineContent,
@@ -124,7 +124,8 @@
   }
 
   .timelineMarker {
-    left: 0;
+    left: -36px;
+    top: 46px;
     transform: none;
   }
 
@@ -133,7 +134,7 @@
   }
 
   .experienceTimeline::before {
-    left: 8px;
+    left: 13px;
     transform: none;
   }
 }
