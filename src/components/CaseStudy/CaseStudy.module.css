@@ -385,6 +385,29 @@ html:has(.lightbox[open]) {
   padding-top: 2px;
 }
 
+/* Test names in the verification list, linking to the source */
+.testLink {
+  font-family: var(--font-accent);
+  font-size: 0.78rem;
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-color: rgba(143, 189, 198, 0.35);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.inlineLink {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-color: rgba(143, 189, 198, 0.35);
+  text-underline-offset: 3px;
+}
+
+.testLink:hover,
+.inlineLink:hover {
+  text-decoration-color: var(--blue);
+}
+
 .linkChip {
   font-family: var(--font-accent);
   font-size: 0.85rem;

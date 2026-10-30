@@ -217,24 +217,62 @@ export const productScreen = {
   alt: "Dictionary search for “lever” in the current client: noun and verb entries with pronunciation, audio, definitions, an example, an illustration, word forms, and a save button.",
 } as const;
 
+// Pinned to a commit so the line ranges keep pointing at the described tests
+const API_REPO = "https://github.com/marusyaganza/language-power-api";
+const API_COMMIT = "25a4443e58417fcdc74f8c337839504ea6e70500";
+const apiTest = (file: string, name: string, lines: string) => ({
+  name,
+  href: `${API_REPO}/blob/${API_COMMIT}/tests/api/${file}#${lines}`,
+});
+
+export const apiCiUrl = `${API_REPO}/actions/workflows/ci.yml`;
+
 export const verificationItems = [
   {
     claim: "A learner cannot read or modify another learner’s vocabulary",
     evidence:
       "A second account gets 404 when editing or deleting the first account’s word and sees an empty vocabulary; the owner’s word is unchanged. Game sessions are checked the same way.",
-    files: ["tests/api/test_words.py", "tests/api/test_games.py"],
+    tests: [
+      apiTest(
+        "test_words.py",
+        "test_other_users_words_are_invisible",
+        "L130-L141",
+      ),
+      apiTest(
+        "test_games.py",
+        "test_other_user_cannot_use_a_session",
+        "L174-L181",
+      ),
+    ],
   },
   {
     claim: "An answer updates the scheduling state and appends a review record",
     evidence:
       "Answering a question saves word_progress for that game type and exactly one review_logs row, before the response is returned.",
-    files: ["tests/api/test_games.py"],
+    tests: [
+      apiTest(
+        "test_games.py",
+        "test_answer_is_graded_and_progress_saved",
+        "L114-L128",
+      ),
+    ],
   },
   {
     claim: "Deleting an account removes everything it owns",
     evidence:
       "The demo’s cleanup relies on ON DELETE CASCADE: deleting a user through SQL or the ORM removes their words, examples, progress, review history, and settings, while another user’s data survives.",
-    files: ["tests/api/test_user_deletion.py"],
+    tests: [
+      apiTest(
+        "test_user_deletion.py",
+        "test_sql_delete_removes_everything_the_user_owns",
+        "L47-L62",
+      ),
+      apiTest(
+        "test_user_deletion.py",
+        "test_orm_delete_removes_everything_the_user_owns",
+        "L65-L71",
+      ),
+    ],
   },
 ] as const;
 

@@ -19,6 +19,7 @@ import {
   settingsScreen,
   snapshotRows,
   verificationItems,
+  apiCiUrl,
 } from "./data";
 import architectureDiagram from "./architecture.png";
 
@@ -133,7 +134,16 @@ const LanguageLearningBody = () => {
         <p>
           Each rule above is checked by an automated API test in the v3 backend.
           The tests call the app over HTTP against real PostgreSQL and Redis,
-          and run in CI on every push.
+          and{" "}
+          <a
+            href={apiCiUrl}
+            className={styles.inlineLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            run in CI on every push
+          </a>
+          .
         </p>
         <ul className={`${styles.arrowList} ${styles.arrowListBlue}`}>
           {verificationItems.map((item) => (
@@ -142,8 +152,18 @@ const LanguageLearningBody = () => {
               <span className="block text-[0.92rem] text-text-dim">
                 {item.evidence}
               </span>
-              <span className="mt-1 block font-accent text-[0.78rem] text-blue">
-                {item.files.join(" · ")}
+              <span className="mt-1 flex flex-wrap gap-x-4 gap-y-1">
+                {item.tests.map((test) => (
+                  <a
+                    key={test.name}
+                    href={test.href}
+                    className={styles.testLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {test.name} →
+                  </a>
+                ))}
               </span>
             </li>
           ))}
