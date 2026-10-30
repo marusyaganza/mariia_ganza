@@ -61,6 +61,8 @@ const CaseSideRail = ({ meta }: CaseSideRailProps) => {
         <a
           href={meta.repositoryUrl}
           className={meta.demoUrl ? styles.railCtaSecondary : styles.railCta}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Browse Source Code →
         </a>

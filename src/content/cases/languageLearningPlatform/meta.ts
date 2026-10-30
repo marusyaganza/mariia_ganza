@@ -30,5 +30,5 @@ export const meta: CaseStudyMeta = {
   ],
   demoUrl: "https://language-power.netlify.app",
   // Several repositories (v1–v3), so the rail points at the links section
-  repositoryUrl: "#links",
+  repositoryUrl: "https://github.com/marusyaganza/language-power-api",
 };
