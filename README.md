@@ -141,7 +141,7 @@ Errors are reported to [Sentry](https://sentry.io) when a DSN is set. Without on
 | `yarn build` | Production build |
 | `yarn start` | Serve the production build |
 | `yarn lint` | Run ESLint |
-| `yarn type-check` | Run TypeScript checks (`tsc --noEmit`) |
+| `yarn type-check` | Generate Next.js types (`next typegen`), then run TypeScript checks (`tsc --noEmit`) |
 | `yarn test:visual` | Build the site and compare it with the baseline screenshots |
 | `yarn test:visual:update` | Accept the current rendering as the new baseline |
 
