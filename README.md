@@ -1,5 +1,7 @@
 # Mariia Ganza Portfolio
 
+[![CI](https://github.com/marusyaganza/mariia_ganza/actions/workflows/ci.yml/badge.svg)](https://github.com/marusyaganza/mariia_ganza/actions/workflows/ci.yml)
+
 My personal portfolio site: a single page with my background, skills, projects, work history and contact links, plus long-form case studies of individual projects. It is built with Next.js, TypeScript and Tailwind CSS, in a noir detective theme: projects are "case files", the skills panel is the "evidence locker", and the work history is an "experience record".
 
 **Live site: [mariia-ganza.vercel.app](https://mariia-ganza.vercel.app)**
@@ -156,13 +158,15 @@ I run them before and after dependency upgrades and styling refactors. The basel
 
 There are no unit tests. The site has almost no logic of its own, so lint, type checks and the visual tests cover it.
 
+CI (`.github/workflows/ci.yml`) installs from the lockfile, then runs lint, type checks and the production build on every push to `main` and on pull requests. The visual tests are not part of CI yet.
+
 ## Deployment
 
-The site is deployed on Vercel. Every page is static, and the Sentry route and source map upload work through the Next.js build, so Vercel needs no extra configuration beyond the Sentry variables. `next.config.ts` adds `X-Frame-Options`, `X-Content-Type-Options` and `Referrer-Policy` headers to every response.
+The site is deployed on Vercel. Every page is static, and the Sentry route and source map upload work through the Next.js build, so Vercel needs only two settings besides the Sentry variables: `ENABLE_EXPERIMENTAL_COREPACK=1`, so it installs with the pinned Yarn 4 instead of its default Yarn 1, and Node.js 24.x. `next.config.ts` adds `X-Frame-Options`, `X-Content-Type-Options` and `Referrer-Policy` headers to every response.
 
 ## Limitations
 
-- No CI. Lint, type checks and the visual tests are run by hand
+- The visual tests are run by hand, not in CI
 - The visual baseline only matches on Linux with Chrome
 - Content is written in the components and case study files; there is no CMS
 - One case study so far
