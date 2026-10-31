@@ -4,6 +4,8 @@
 
 My personal portfolio site: a single page with my background, skills, projects, work history and contact links, plus long-form case studies of individual projects. It is built with Next.js, TypeScript and Tailwind CSS, in a noir detective theme: projects are "case files", the skills panel is the "evidence locker", and the work history is an "experience record".
 
+The site itself is a static Next.js app. The backend work it presents lives in other repositories: [language-power-api](https://github.com/marusyaganza/language-power-api) (Python, FastAPI, PostgreSQL, Redis) and its React + TypeScript [client](https://github.com/marusyaganza/language-power-client). See [Related projects](#related-projects).
+
 **Live site: [mariia-ganza.vercel.app](https://mariia-ganza.vercel.app)**
 
 ![Home page: "I'm Mariia Ganza, Backend-leaning Fullstack Engineer" hero in the dark noir theme, with the case-file navigation](docs/screenshots/home-desktop.webp)
@@ -22,14 +24,13 @@ My personal portfolio site: a single page with my background, skills, projects, 
 
 ## Features
 
-- Home page sections: hero, about and skills, project cards, experience timeline and contact, each wrapped in its own error boundary
-- Case study pages at `/cases/<slug>`, with a table of contents, architecture diagram, screenshots that open full size, and links to the evidence
+- Case study pages at `/cases/<slug>`, generated from a typed registry: publishing a case creates its page and sitemap entry, and a project card can only link to a case that exists
 - Every page is prerendered as static HTML at build time
-- Screenshot-based Open Graph images for the home page and for each case study, a sitemap that lists every published case, `robots.txt` and JSON-LD structured data
+- Each home page section (hero, about and skills, project cards, experience timeline, contact) has its own error boundary, so one failing section doesn't take down the page; errors are reported to Sentry
+- Screenshot-based Open Graph images for the home page and for each case study, a sitemap, `robots.txt` and JSON-LD structured data
 - Downloadable CV (`public/Mariia_Ganza_CV.pdf`)
-- Theme effects: film grain, venetian-blind shadows, spotlights (one follows the cursor), a blinking caret under the hero title, and an occasional "faulty neon" flicker on skill and tech tags
-- Sound effects on navigation clicks, loaded only on the first play
 - With reduced motion turned on in the OS, animations jump to their end state and the random effects are off
+- Theme effects (film grain, venetian-blind shadows, spotlights, a blinking caret, an occasional neon flicker) and sound effects on navigation clicks, loaded only on the first play
 
 ## Tech stack
 
@@ -170,3 +171,17 @@ The site is deployed on Vercel. Every page is static, and the Sentry route and s
 - The visual baseline only matches on Linux with Chrome
 - Content is written in the components and case study files; there is no CMS
 - One case study so far
+
+## Related projects
+
+The projects the site presents:
+
+- [language-power-api](https://github.com/marusyaganza/language-power-api): Language Power v3 backend, Python and FastAPI with PostgreSQL and Redis. The subject of the case study
+- [language-power-client](https://github.com/marusyaganza/language-power-client): the React + TypeScript frontend of v3
+- [language-power-v2](https://github.com/marusyaganza/language-power-v2): second version, a TypeScript monorepo with a GraphQL server and a Storybook design system
+- [language-power-v1-client](https://github.com/marusyaganza/language-power-v1-client) and [language-power-v1-api](https://github.com/marusyaganza/language-power-v1-api): first version, an English-only app with an Express REST API
+- [stars-travel](https://github.com/marusyaganza/stars-travel): a fictional travel agency built with Next.js, Prisma and Redis
+
+## License
+
+The code is [MIT](LICENSE) licensed. The CV, the written content and the screenshots are not covered.
