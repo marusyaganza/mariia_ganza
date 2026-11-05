@@ -24,7 +24,7 @@ const firaMono = Fira_Mono({
   display: "swap",
 });
 
-const TITLE = "Mariia Ganza | Backend-leaning Fullstack Engineer";
+const TITLE = "Mariia Ganza | Backend-leaning Full-stack Engineer";
 
 export const metadata: Metadata = {
   title: {
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    "Backend-leaning Fullstack Engineer",
-    "Fullstack Engineer",
+    "Backend-leaning Full-stack Engineer",
+    "Full-stack Engineer",
     "Backend Developer",
     "Python",
     "FastAPI",

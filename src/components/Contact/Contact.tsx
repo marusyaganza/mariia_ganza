@@ -19,7 +19,7 @@ const Contact = () => {
           <blockquote className="text-xl mb-12 opacity-90 italic space-y-3 text-balance">
             <p>
               <strong>
-                Open to remote Python backend and backend-leaning fullstack
+                Open to remote Python backend and backend-leaning full-stack
                 roles.
               </strong>
             </p>

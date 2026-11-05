@@ -28,7 +28,7 @@ const Hero = () => {
               <span className={styles.highlightName}>Mariia Ganza</span>
             </h1>
             <h2 className={styles.roleTitle}>
-              Backend-leaning Fullstack Engineer
+              Backend-leaning Full-stack Engineer
             </h2>
             <p className={styles.subtitle}>
               Python · FastAPI · PostgreSQL · TypeScript · React
@@ -36,8 +36,8 @@ const Hero = () => {
             <p>
               I build web applications and trace problems across the browser,
               API, and database. My current focus is Python backend development,
-              building on professional React/TypeScript experience and
-              independent fullstack projects.
+              building on eight years of professional React/TypeScript work
+              and independent full-stack projects.
             </p>
             <section className={styles.buttons}>
               <button

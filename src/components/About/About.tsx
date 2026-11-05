@@ -26,7 +26,14 @@ const skillsData = [
   },
   {
     title: "TESTING & DELIVERY",
-    skills: ["Automated testing", "Cypress", "Docker", "GitHub Actions"],
+    skills: [
+      "pytest",
+      "Jest",
+      "Cypress",
+      "Docker",
+      "GitHub Actions",
+      "Google Cloud Run",
+    ],
   },
 ];
 
@@ -54,10 +61,11 @@ const About = () => {
               assume where a failure belongs.
             </p>
             <p>
-              I later moved into Java/JSP web development and professional
-              frontend roles. My work has included React/TypeScript
-              applications, reusable components, accessibility, and automated
-              testing, alongside independent fullstack projects.
+              I started at EPAM as a Java trainee and later worked on one
+              production JSP project, but most of my professional work has been
+              in JavaScript and TypeScript: React applications, design systems,
+              accessibility, and automated testing, alongside independent
+              full-stack projects.
             </p>
             <p>
               I especially enjoy bugs whose ownership is unclear at first. I
@@ -68,7 +76,7 @@ const About = () => {
             <p>
               My current projects use Python, FastAPI, PostgreSQL, SQLAlchemy,
               and Redis. I am looking for remote Python backend or
-              backend-leaning fullstack work where that frontend experience
+              backend-leaning full-stack work where that frontend experience
               remains useful.
             </p>
           </article>

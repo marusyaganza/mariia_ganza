@@ -20,10 +20,10 @@ interface Project {
 const projects: Project[] = [
   {
     number: "CASE #001",
-    title: "Language Learning Platform",
+    title: "Language Power",
     status: "Active development",
     description:
-      "A private vocabulary and spaced-repetition application, evolved from Node.js to a Python/FastAPI backend.",
+      "A vocabulary and spaced-repetition application, evolved from Node.js to a Python/FastAPI backend. It runs privately for my own daily study and as a public demo.",
     text: "The current implementation uses PostgreSQL, SQLAlchemy, Redis, session-based authentication, and a React client. The case study examines learner-owned data, review scheduling, API boundaries, and the trade-offs behind successive architectures.",
     tech: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Redis", "React"],
     caseSlug: "language-learning-platform",
@@ -31,9 +31,9 @@ const projects: Project[] = [
   {
     number: "CASE #002",
     title: "Stars Travel",
-    status: "Independent portfolio project",
+    status: "Independent portfolio project · not deployed",
     description:
-      "A fictional travel-agency application exploring Next.js fullstack development and AI chatbot integration.",
+      "A fictional flight-booking application exploring Next.js full-stack development and AI chatbot integration.",
     text: "Built with TypeScript, PostgreSQL, Prisma, and Redis. The project documents the existing implementation and its limitations, including external-service integration and the boundary between a portfolio simulation and a real booking service.",
     tech: [
       "Next.js",

@@ -3,7 +3,7 @@ import ogScreen from "./screens/og.jpg";
 
 export const meta: CaseStudyMeta = {
   number: "001",
-  title: "Language Learning Platform",
+  title: "Language Power",
   headline:
     "Evolving a private language-learning platform from Node.js to FastAPI",
   summary:
@@ -12,7 +12,7 @@ export const meta: CaseStudyMeta = {
   description:
     "Case study: a private vocabulary app for saving words in context and practicing them with spaced repetition, rebuilt from Node.js to FastAPI, PostgreSQL, and React.",
   details: {
-    role: "Fullstack Developer",
+    role: "Full-stack Developer",
     timeframe: "2019 – present",
     status: "Active",
   },
@@ -33,6 +33,6 @@ export const meta: CaseStudyMeta = {
   repositoryUrl: "https://github.com/marusyaganza/language-power-api",
   ogImage: {
     image: ogScreen,
-    alt: "Dictionary search for “lever” in the language learning platform: definitions, an example, and an illustration.",
+    alt: "Dictionary search for “lever” in Language Power: definitions, an example, and an illustration.",
   },
 };

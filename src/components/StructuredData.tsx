@@ -4,7 +4,7 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Mariia Ganza",
-  jobTitle: "Backend-leaning Fullstack Engineer",
+  jobTitle: "Backend-leaning Full-stack Engineer",
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   sameAs: [
