@@ -31,9 +31,17 @@ const DecisionCard = ({ number, title, rows, link }: DecisionCardProps) => {
         </div>
       ))}
       {link && (
-        <a href={link.href} className={`${styles.linkChip} mt-4 inline-block`}>
-          {link.label}
-        </a>
+        <div className={styles.decisionRow}>
+          <span className={styles.decisionKey}>Full write-up</span>
+          <a
+            href={link.href}
+            className={styles.inlineLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {link.label} →
+          </a>
+        </div>
       )}
     </article>
   );

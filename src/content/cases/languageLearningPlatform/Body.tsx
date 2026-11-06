@@ -201,6 +201,7 @@ const LanguageLearningBody = () => {
             number={decision.number}
             title={decision.title}
             rows={decision.rows}
+            link={"link" in decision ? decision.link : undefined}
           />
         ))}
       </CaseBlock>

@@ -80,7 +80,7 @@ export const evolution = [
   },
   {
     version: "v2",
-    period: "2022 – 2026",
+    period: "2022 – 2025",
     title: "TypeScript GraphQL monorepo",
     status: "Historical",
     stage: "historical",
@@ -146,6 +146,10 @@ export const copyReasons = [
   "Reviewing already-saved vocabulary does not require another dictionary lookup",
 ] as const;
 
+// Long-form write-up of decision 01
+const ARTICLE_URL =
+  "https://dev.to/marusyaganza/from-a-graphql-monorepo-to-fastapi-and-react-the-coupling-changed-49eo";
+
 export const decisions = [
   {
     number: "DECISION 01",
@@ -159,14 +163,18 @@ export const decisions = [
       {
         key: "Trade-off",
         value:
-          "Shared types made contract changes atomic, but every schema change meant regenerating types in each package before anything built, and moving one side to a new stack meant untangling it from the shared tooling.",
+          "Shared types caught schema drift early and kept a whole feature in one pull request. But codegen was configured separately in three packages, so an Apollo upgrade on the server broke it, and neither Docker image could be built without the shared schema and the design system’s source.",
       },
       {
         key: "Result",
         value:
-          "v3 keeps the client and server in separate repositories with their own build and deployment pipelines. They meet at a documented REST API, and the client validates every response at runtime, so contract changes still need coordination but no shared build step.",
+          "v3 keeps the client and server in separate repositories with their own build and deployment pipelines. They meet at a documented REST API, and the client validates every response it uses at runtime, so contract changes still need coordination but no shared build step.",
       },
     ],
+    link: {
+      href: ARTICLE_URL,
+      label: "From a GraphQL monorepo to FastAPI and React",
+    },
   },
   {
     number: "DECISION 02",
@@ -281,6 +289,7 @@ export const settingsScreen = {
   alt: "Spaced repetition settings dialog: the Recommended preset with learning steps of 15 minutes, 1 day and 6 days, and a preview of when a new word comes back.",
 } as const;
 
+// Grouped: source code, running software, explanations, about me
 export const evidenceLinks = [
   {
     href: "https://github.com/marusyaganza/language-power-v1-api",
@@ -297,15 +306,25 @@ export const evidenceLinks = [
     label: "v3 · FastAPI Backend →",
     external: true,
   },
+  {
+    href: "https://github.com/marusyaganza/language-power-client",
+    label: "v3 · React Client →",
+    external: true,
+  },
   { href: meta.demoUrl, label: "Live Demo →", external: true },
+  {
+    href: "https://language-power.netlify.app/api/docs",
+    label: "Live API Docs →",
+    external: true,
+  },
   {
     href: "https://lp-design-system.netlify.app/?path=/docs/design-system-colors--docs",
     label: "v2 · Playable Storybook →",
     external: true,
   },
   {
-    href: "https://language-power.netlify.app/api/docs",
-    label: "Live API Docs →",
+    href: ARTICLE_URL,
+    label: "Article · Monorepo to FastAPI →",
     external: true,
   },
   { href: "#architecture", label: "Architecture Diagram →" },
